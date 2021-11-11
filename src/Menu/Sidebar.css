@@ -1,0 +1,24 @@
+.sidebar{
+    width: 200px;
+    height: 88vh;
+    background-color: #353535;
+    border-radius: 15px 0 0 0;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    color: #FFC412 !important;
+    overflow-y:auto ;
+    scrollbar-width: none !important;
+}
+.sidebar-title{
+    width: 100%;
+    padding:15px;
+    border-bottom: 1px solid #FFC412;
+}
+.sidebar::-webkit-scrollbar{
+    display: none !important;
+}
+.sidebar img{
+    width: 30px;
+    margin-left: 15px !important;
+}
