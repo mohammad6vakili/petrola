@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Profile.css";
 import Header from "../../Menu/Header";
+import {useHistory} from "react-router-dom";
 import avatarImage from "../../Assets/images/avatar.png";
 import arrowImage from "../../Assets/images/profileArrow.svg";
 import profileAd from "../../Assets/images/profile-ad.svg";
@@ -15,6 +16,9 @@ import profileArrowRed from "../../Assets/images/profile-arrow-red.svg";
 
 
 const Profile=()=>{
+
+    const history=useHistory();
+
     return(
         <div className="profile">
             <Header/>
@@ -23,7 +27,7 @@ const Profile=()=>{
                 <span>محمدعلی وکیلی دوست</span>
             </div>
             <div className="profile-btn-wrapper">
-                <div>
+                <div onClick={()=>history.push("/company/info")}>
                     <div>
                         <img src={profileInfo} alt="info" />
                         <span>اطلاعات شرکت</span>
@@ -71,14 +75,14 @@ const Profile=()=>{
 
                 <div className="profile-space-div"></div>
 
-                <div>
+                <div onClick={()=>history.push("/contact")}>
                     <div>
                         <img src={profileHead} alt="info" />
                         <span>تماس با پشتیبانی</span>
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                <div>
+                <div onClick={()=>history.push("/")}>
                     <div>
                         <img src={profileExit} alt="info" />
                         <span style={{color:"red"}}>خروج از حساب کاربری</span>

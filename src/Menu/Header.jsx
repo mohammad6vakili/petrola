@@ -14,7 +14,12 @@ const Header=()=>{
     return(
         <div className="header">
             <div className="header-logo">
-                <img src={logo} alt="logo" />
+                <img 
+                    style={{cursor:"pointer"}}
+                    onClick={()=>history.push("/home")} 
+                    src={logo} 
+                    alt="logo" 
+                />
             </div>
             <div className="header-search">
                 <Input placeholder="جستجو در آگهی ها..."/>
