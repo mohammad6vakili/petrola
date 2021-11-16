@@ -1,0 +1,132 @@
+.company-submit {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.company-submit-steps {
+  width: 100%;
+  direction: ltr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+.company-submit-step {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #353535;
+  box-shadow: 1px 1px 5px #35353580;
+  color: #ffc412;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  position: relative;
+}
+.company-submit-step > div {
+  position: absolute;
+  color: #353535;
+  top: -35px;
+  right: -15px;
+  width: 200%;
+  font-size: 17px;
+  font-weight: 700;
+}
+.company-submit-step-line {
+  width: 150px;
+  height: 4px;
+  background-color: #353535;
+}
+.step-active {
+  background-color: #ffc412;
+  box-shadow: 1px 1px 5px #ffc41280;
+  color: #353535;
+}
+.company-submit-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.company-submit-body > input,
+.company-submit-body > textarea {
+  width: 50% !important;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #35353580;
+  border-radius: 4px !important;
+}
+.company-submit-body > textarea {
+  padding: 5px 10px;
+  min-height: 120px !important;
+}
+.company-submit-body > button,
+.company-submit-body-upload-btn {
+  width: 50% !important;
+  border-radius: 4px !important;
+  background-color: #353535 !important;
+  color: #ffc412 !important;
+  height: 40px !important;
+  margin: 40px 0 !important;
+}
+.company-submit-body-upload-section > span,.company-submit-body-upload-section-two > span {
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.company-submit-body > button:hover,
+.company-submit-body > button:focus,
+.company-submit-body-upload-btn:hover,
+.company-submit-body-upload-btn:focus {
+  background-color: #ffc412 !important;
+  color: #353535 !important;
+  font-weight: 700 !important;
+}
+.company-submit-body-upload-section,.company-submit-body-upload-section-two {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+.company-submit-body-upload-section > img{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  outline: 2px solid #ffc412;
+}
+.company-submit-body-upload-section > div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-submit-body-upload-section-two>img{
+    width: 90%;
+    height: 250px;
+    border-radius: 4px;
+    outline: 2px solid #ffc412;
+}
+.company-submit-body-upload-section-two>div{
+    width: 90%;
+    height: 250px;
+    background-color: gray;
+    color: white;
+    font-size:22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.company-submit-body-upload-btn {
+  width: unset !important;
+  margin: 15px 0 !important;
+}

@@ -12,6 +12,7 @@ import Vip from "./Components/Vip/Vip";
 import Profile from "./Components/Profile/Profile";
 import CompanyInfo from './Pages/Profile/CompanyInfo';
 import ContactUs from './Pages/Profile/ContactUs';
+import CompanySubmit from './Pages/Profile/CompanySubmit';
 
 const App=()=>{
   return (
@@ -25,6 +26,7 @@ const App=()=>{
         <Route path="/profile" component={Profile} />
         <Route path="/contact" component={ContactUs} />
         <Route path="/company/info" component={CompanyInfo} />
+        <Route path="/company/submit" component={CompanySubmit} />
       </Switch>
     </div>
   );

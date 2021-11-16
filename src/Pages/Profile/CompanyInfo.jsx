@@ -1,5 +1,6 @@
 import React from 'react';
 import "./CompanyInfo.css";
+import { useHistory } from 'react-router';
 import Header from "../../Menu/Header";
 import HeaderImage from "../../Assets/images/company-info-img.png";
 import avatarImage from "../../Assets/images/avatar.png";
@@ -12,11 +13,14 @@ import penDark from '../../Assets/images/pen-dark.svg';
 
 
 const CompanyInfo=()=>{
+
+    const history=useHistory();
+
     return(
         <div className="company-info">
             <Header/>
             <div className="company-top-banner" data-target="tooltip" title="ویرایش">
-                <div className="company-top-edit-btn">
+                <div onClick={()=>history.push("/company/submit")} className="company-top-edit-btn">
                     <img src={penDark} alt="edit" />
                 </div>
                 <img src={avatarImage} alt="avatar"/>

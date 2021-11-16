@@ -50,3 +50,7 @@
   padding-right: 10px;
   font-size: 13px !important;
 }
+.ant-upload{
+  display: flex;
+  align-items: flex-start;
+}
