@@ -127,6 +127,20 @@
     align-items: center;
 }
 .company-submit-body-upload-btn {
-  width: unset !important;
+  width: 250px !important;
   margin: 15px 0 !important;
+}
+.company-submit-body-success{
+  width: 40%;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #EEF1F1;
+}
+.company-submit-body-success>span{
+  font-size: 18px;
+  font-weight: 700;
+  margin:25px 0 15px 0;
 }

@@ -59,7 +59,7 @@ const CompanyInfo=()=>{
                         <span>نمایندگی ها</span>
                         <img src={goldArrow} alt="arrow" />
                     </div>
-                    <div>
+                    <div onClick={()=>history.push("/company/news")}>
                         <span>اخبار</span>
                         <img src={goldArrow} alt="arrow" />
                     </div>

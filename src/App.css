@@ -17,6 +17,26 @@
   align-items: center;
   justify-content: flex-start;
 }
+.btn-dark{
+  background-color: #353535 !important;
+  color: #FFC412 !important;
+  height: 35px !important;
+  border-radius: 4px !important;
+}
+.btn-dark:hover , .btn-dark:focus{
+  background-color: #FFC412 !important;
+  color: #353535 !important;
+}
+.ant-scrolling-effect{
+  width: 100% !important;
+}
+.ant-modal-title{
+  text-align: center;
+  font-weight: 700 !important;
+}
+.ant-modal{
+  border-radius: 10px !important;
+}
 .ant-menu {
   scrollbar-width: none !important;
 }

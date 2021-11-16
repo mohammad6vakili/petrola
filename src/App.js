@@ -13,6 +13,8 @@ import Profile from "./Components/Profile/Profile";
 import CompanyInfo from './Pages/Profile/CompanyInfo';
 import ContactUs from './Pages/Profile/ContactUs';
 import CompanySubmit from './Pages/Profile/CompanySubmit';
+import CompanyNews from './Pages/Profile/CompanyNews';
+
 
 const App=()=>{
   return (
@@ -27,6 +29,7 @@ const App=()=>{
         <Route path="/contact" component={ContactUs} />
         <Route path="/company/info" component={CompanyInfo} />
         <Route path="/company/submit" component={CompanySubmit} />
+        <Route path="/company/news" component={CompanyNews} />
       </Switch>
     </div>
   );

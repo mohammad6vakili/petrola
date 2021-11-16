@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import "./CompanySubmit.css";
 import Header from "../../Menu/Header";
 import { Input , Button , Upload} from 'antd';
+import { useHistory } from 'react-router';
+import successImage from '../../Assets/images/success.svg';
 const {TextArea}=Input;
 
 const CompanySubmit=()=>{
-    
+    const history=useHistory();
     const [step , setStep]=useState(1);
     const [logoImage , setLogoImage]=useState(null);
     const [bannerImage , setBannerImage]=useState(null);
@@ -50,7 +52,7 @@ const CompanySubmit=()=>{
                             :                            
                                 <img src={logoImage} alt="logo" />
                             }
-                            <Upload onChange={(e)=>setLogoImage(e.file.thumbUrl)}>
+                            <Upload showUploadList={false} onChange={(e)=>setLogoImage(e.file.thumbUrl)}>
                                 <Button className="company-submit-body-upload-btn">انتخاب تصویر لوگو</Button>
                             </Upload>
                         </div>
@@ -58,15 +60,22 @@ const CompanySubmit=()=>{
                             {bannerImage===null ?
                                 <div>تصویر</div>
                             :                            
-                                <img src={logoImage} alt="logo" />
+                                <img src={bannerImage} alt="logo" />
                             }
-                            <Upload onChange={(e)=>setBannerImage(e.file.thumbUrl)}>
+                            <Upload showUploadList={false} onChange={(e)=>setBannerImage(e.file.thumbUrl)}>
                                 <Button className="company-submit-body-upload-btn">انتخاب تصویر شرکت</Button>
                             </Upload>
                         </div>
+                        <Button onClick={()=>setStep(3)}>مرحله بعد</Button>
                     </>
                 }
-                
+                {step===3 &&
+                    <div className="company-submit-body-success">
+                        <img src={successImage} alt="success" />
+                        <span>اطلاعات شما با موفقیت در پترولا ثبت شد</span>
+                        <Button onClick={()=>history.push("/company/info")} className="company-submit-body-upload-btn">بازگشت</Button>
+                    </div>
+                }
             </div>
         </div>
     )
