@@ -27,6 +27,16 @@
   background-color: #FFC412 !important;
   color: #353535 !important;
 }
+.btn-gold{
+  background-color: #FFC412 !important ;
+  height: 35px !important;
+  color: #353535 !important;
+  border-radius: 4px !important;
+}
+.btn-gold:hover,.btn-gold:focus{
+background-color: #353535 !important;
+color: #FFC412 !important;
+}
 .ant-scrolling-effect{
   width: 100% !important;
 }

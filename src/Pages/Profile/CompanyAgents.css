@@ -1,0 +1,45 @@
+.company-agents-items {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  padding: 20px 0;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.company-agents-items > div {
+  width: 25%;
+  height: 350px;
+  margin: 10px 30px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.356);
+  display: flex;
+  padding: 10px 5px;
+  flex-direction: column;
+  align-items: center;
+}
+.company-agents-items > div > div {
+  padding: 5px 10px;
+}
+.company-agents-items > div > img {
+  width: 30% !important;
+  border-radius: 4px 4px 0 0;
+}
+.company-agents-items > div button {
+  background-color: #ffc412;
+  color: #353535;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+}
+.company-agents-items > div button:focus,
+.company-agents-items > div button:hover {
+  background-color: #ffc412;
+}
+.company-agents-items > div button > img {
+  width: 100% !important;
+}

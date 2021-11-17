@@ -1,0 +1,27 @@
+.create-ad {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-ad-step-one {
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding: 10px 40px 100px 40px;
+}
+.create-ad-step-one > span {
+  font-size: 22px;
+  margin: 15px 0;
+}
+.create-ad-step-one > label {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+.create-ad-step-one > button {
+  margin-top: 25px;
+}

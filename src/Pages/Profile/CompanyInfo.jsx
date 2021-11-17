@@ -55,7 +55,7 @@ const CompanyInfo=()=>{
                 <div className="company-info-sep"></div>
                
                 <div className="company-info-third">
-                    <div>
+                    <div onClick={()=>history.push("/company/agents")}>
                         <span>نمایندگی ها</span>
                         <img src={goldArrow} alt="arrow" />
                     </div>

@@ -43,7 +43,7 @@ const Header=()=>{
                 </div>
             </div>
             <div className="header-btn">
-                <Button>ثبت آگهی</Button>
+                <Button onClick={()=>history.push("/ads/create")}>ثبت آگهی</Button>
             </div>
         </div>
     )
