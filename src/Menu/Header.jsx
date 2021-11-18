@@ -43,6 +43,7 @@ const Header=()=>{
                 </div>
             </div>
             <div className="header-btn">
+                <img  onClick={()=>history.push("/chat")} style={{cursor:"pointer"}} src={chatImage} alt="chat" />
                 <Button onClick={()=>history.push("/ads/create")}>ثبت آگهی</Button>
             </div>
         </div>

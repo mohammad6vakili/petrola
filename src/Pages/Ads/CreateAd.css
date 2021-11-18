@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  padding: 10px 40px 100px 40px;
+  padding: 10px 15px 100px 15px;
 }
 .create-ad-step-one > span {
   font-size: 22px;
@@ -24,4 +24,57 @@
 }
 .create-ad-step-one > button {
   margin-top: 25px;
+}
+.create-ad-step-two {
+  width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  font-size: 18px;
+}
+.create-ad-step-two-head > div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 700;
+  margin: 15px 0;
+}
+.create-ad-step-two-seperate{
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  margin-top: 35px !important;
+}
+.create-ad-step-two-seperate>div{
+  width: 100%;
+  background-color: #353535;
+  height: 1px;
+}
+.create-ad-step-two-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-ad-step-two-full-form{
+  width: 70% !important;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+.create-ad-step-two-full-form>span:nth-child(2){
+  font-size: 13px;
+  margin: 10px 0;
+}
+.create-ad-step-two-mini-form{
+  width: 70%;
+  display: flex;
+  margin: 25px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.create-ad-step-two-mini-form>input,.create-ad-step-two-mini-form>div{
+  width: 25%;
+  height: 50px;
 }

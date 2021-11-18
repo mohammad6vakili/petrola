@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Colors from "../Helper/Colors";
 import "./Sidebar.css";
-import { Menu } from 'antd';
+import { Menu,Checkbox } from 'antd';
 import { useDispatch , useSelector} from 'react-redux';
 import {setSide} from "../Store/Action";
 import Fa from "../Constant/Fa.json";
@@ -41,164 +41,116 @@ const Sidebar=()=>{
 
     return(
         <div className="sidebar">
-            <div className="sidebar-title">دسته بندی ها</div>
+            <div className="sidebar-title">فیلتر بر اساس نوع آگهی</div>
+            <div style={{display:"flex",flexDirection:"column",padding:"0 15px 15px 15px"}}>
+                <Checkbox>خرید</Checkbox>
+                <Checkbox>فروش</Checkbox>
+                <Checkbox>خدمات</Checkbox>
+            </div>
+            <div className="sidebar-title">فیلتر بر اساس دسته بندی</div>
             <div style={{width:"100%"}}>
                     <Menu
                         mode="inline"
-                        // defaultSelectedKeys={["0"]}
+                        multiple={true}
                         style={{
-                            backgroundColor:Colors.dark,
-                            color:Colors.gold,
+                            color:Colors.dark,
                             width: "100%",
                             overflowY:"scroll",
                             overflowX:"hidden",
-                            borderRadius:"15px 0 0 0"
                         }}
                     >
                         <Menu.Item
                             onClick={()=>dispatch(setSide(1))}
                             key="1"
                         >
-                            {side===1 ?
                                 <img src={oneDark} alt="one"/>
-                                :
-                                <img src={one} alt="one"/>
-                            }
                             {Fa.sOne}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(2))}
                             key="2"
                         >
-                            {side===2 ?
                                 <img src={twoDark} alt="one"/>
-                                :
-                                <img src={two} alt="one"/>
-                            }
                             {Fa.sTwo}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(3))}
                             key="3"
                         >
-                            {side===3 ?
                                 <img src={threeDark} alt="one"/>
-                                :
-                                <img src={three} alt="one"/>
-                            }
                             {Fa.sThree}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(4))}
                             key="4"
                         >
-                            {side===4 ?
                                 <img src={fourDark} alt="one"/>
-                                :
-                                <img src={four} alt="one"/>
-                            }
                             {Fa.sFour}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(5))}
                             key="5"
                         >
-                            {side===5 ?
                                 <img src={fiveDark} alt="one"/>
-                                :
-                                <img src={five} alt="one"/>
-                            }
                             {Fa.sFive}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(6))}
                             key="6"
                         >
-                            {side===6 ?
                                 <img src={sixDark} alt="one"/>
-                                :
-                                <img src={six} alt="one"/>
-                            }
                             {Fa.sSix}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(7))}
                             key="7"
                         >
-                            {side===7 ?
                                 <img src={sevenDark} alt="one"/>
-                                :
-                                <img src={seven} alt="one"/>
-                            }
                             {Fa.sSeven}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(8))}
                             key="8"
                         >
-                            {side===8 ?
                                 <img src={eightDark} alt="one"/>
-                                :
-                                <img src={eight} alt="one"/>
-                            }
                             {Fa.sEight}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(9))}
                             key="9"
                         >
-                            {side===9 ?
                                 <img src={nineDark} alt="one"/>
-                                :
-                                <img src={nine} alt="one"/>
-                            }
                             {Fa.sNine}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(10))}
                             key="10"
                         >
-                            {side===10 ?
                                 <img src={tenDark} alt="one"/>
-                                :
-                                <img src={ten} alt="one"/>
-                            }
                             {Fa.sTen}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(11))}
                             key="11"
                         >
-                            {side===11 ?
                                 <img src={elevenDark} alt="one"/>
-                                :
-                                <img src={eleven} alt="one"/>
-                            }
                             {Fa.sEleven}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(12))}
                             key="12"
                         >
-                            {side===12 ?
                                 <img src={twelveDark} alt="one"/>
-                                :
-                                <img src={twelve} alt="one"/>
-                            }
                             {Fa.sTwelve}
                         </Menu.Item>
                         <Menu.Item
                             onClick={()=>dispatch(setSide(13))}
                             key="13"
                         >
-                            {side===13 ?
                                 <img src={thirteenDark} alt="one"/>
-                                :
-                                <img src={thirteen} alt="one"/>
-                            }
                             {Fa.sThirteen}
                         </Menu.Item>
-                </Menu>
+                    </Menu>
                 </div>
         </div>
     )

@@ -1,53 +1,85 @@
-.header{
-    width: 100%;
-    height: 11vh;
-    min-height: 70px;
-    border-bottom: 1px solid #3535353d;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 11111;
-    justify-content: space-between;
+.header {
+  width: 100%;
+  height: 11vh;
+  min-height: 70px;
+  border-bottom: 1px solid #3535353d;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 11111;
+  justify-content: space-between;
 }
-.header-logo>img{
-    width: 100% !important;
-    height: 11vh;
-    min-height: 65px;
+.header-logo > img {
+  width: 100% !important;
+  height: 11vh;
+  min-height: 65px;
 }
-.header-search{
-    width: 35%;
+.header-search {
+  width: 35%;
 }
-.header-search>input{
-    width: 100%;
-    border-radius: 7px;
-    border: 1px solid #3535353d;
-    height: 40px;
-    box-shadow: 3px 1px 10px rgba(53, 53, 53, 0.25);
+.header-search > input {
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid #3535353d;
+  height: 40px;
+  box-shadow: 3px 1px 10px rgba(53, 53, 53, 0.25);
 }
-.header-links{
-    width: 340px;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
+.header-links {
+  width: 340px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
 }
-.header-links>div:hover{
-    cursor: pointer;
+.header-links > div:hover {
+  cursor: pointer;
 }
-.header-links>div>img{
-    margin-left: 5px;
-    width: 23px;
+.header-links > div > img {
+  margin-left: 5px;
+  width: 23px;
 }
-.header-btn>button{
-    width: 100px;
-    height: 40px;
-    border-radius: 30px !important;
-    background-color: #FFC412;
-    color: #353535;
+.header-btn > button {
+  width: 100px;
+  height: 40px;
+  border-radius: 30px !important;
+  background-color: #ffc412;
+  color: #353535;
 }
-.header-btn>button:hover,.header-btn>button:focus{
-    background-color: #353535;
-    color: #FFC412;
+.header-btn > img {
+  display: none;
+}
+.header-btn > button:hover,
+.header-btn > button:focus {
+  background-color: #353535;
+  color: #ffc412;
+}
+@media only screen and (max-width: 1000px) {
+  .header-links {
+    display: none;
+  }
+  .header-logo {
+    display: none;
+  }
+  .header-btn > button {
+    display: none;
+  }
+  .header-btn > img {
+    display: block;
+  }
+  .header-search {
+    width: 70%;
+  }
+  .header-search > input {
+    height: 45px;
+  }
+  .header {
+    height: 50px;
+  }
+}
+@media only screen and (max-width: 500px) {
+    .header-search{
+        width: 85%;
+    }
 }
