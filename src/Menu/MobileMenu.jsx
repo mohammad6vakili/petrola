@@ -29,7 +29,7 @@ const MobileMenu=()=>{
             </div>
             <div 
                 onClick={()=>history.push("/ads/create")}
-                style={location.pathname==="" ? {borderTop:"3px solid #353535",paddingBottom:3+"px"}:{}}
+                style={location.pathname==="/ads/create" ? {borderTop:"3px solid #353535",paddingBottom:3+"px"}:{}}
             >
                 <img src={adsImage} alt="home" />
                 <span>افزودن آگهی</span>

@@ -18,21 +18,21 @@
   position: relative;
   color: white;
 }
-.company-top-edit-btn{
-    width: 35px;
-    height: 30px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    background-color: #ffc412;
-    position:absolute;
-    top: 15px;
-    right: 15px;
+.company-top-edit-btn {
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #ffc412;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
-.company-top-edit-btn>img{
-    width: 20px;
+.company-top-edit-btn > img {
+  width: 20px;
 }
 .company-top-banner > img {
   width: 140px;
@@ -101,11 +101,53 @@
   color: #ffc412;
 }
 .company-info-third > div:hover {
-    outline: 2px solid #ffc412;
-    cursor: pointer;
+  outline: 2px solid #ffc412;
+  cursor: pointer;
 }
-.company-info-third > div > img{
-    width: 10px;
-    position:absolute;
-    left: 15px;
+.company-info-third > div > img {
+  width: 10px;
+  position: absolute;
+  left: 15px;
+}
+@media only screen and (max-width: 1000px) {
+  .company-info {
+    padding-bottom: 70px;
+  }
+  .company-info-second{
+    flex-wrap: wrap;
+  }
+  .company-info-second>div{
+    width: 130px;
+    height: 100px;
+    margin: 5px 10px;
+  }
+  .company-info-second > div img {
+    width: 20%;
+  }
+  .company-info-second > div span {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .company-top-banner {
+    background-size: contain;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .company-top-edit-btn {
+    width: 30px;
+    height: 27px;
+    top: 15px;
+    right: 15px;
+  }
+  .company-top-edit-btn > img {
+    width: 20px;
+  }
+  .company-top-banner > img {
+    margin-bottom: -20px !important;
+  }
+.company-info-first {
+  margin-top: -50px !important;
+}
 }

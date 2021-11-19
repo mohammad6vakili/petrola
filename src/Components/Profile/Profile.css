@@ -1,61 +1,73 @@
-.profile{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.profile {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px;
 }
-.profile-top-banner{
-    width: 100%;
-    height:50vh;
-    background-image: url(/src/Assets/images/profile-bg.svg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
+.profile-top-banner {
+  width: 100%;
+  height: 50vh;
+  background-image: url(/src/Assets/images/profile-bg.svg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
-.profile-top-banner>img{
-    width: 140px;
-    border-radius: 50%;
-    border: 2px solid #FFC412;
-    margin-bottom: 10px;
+.profile-top-banner > img {
+  width: 140px;
+  border-radius: 50%;
+  border: 2px solid #ffc412;
+  margin-bottom: 10px;
 }
-.profile-btn-wrapper{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+.profile-btn-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
-.profile-btn-wrapper>div{
-    width: 100%;
-    height: 60px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+.profile-btn-wrapper > div {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
-.profile-btn-wrapper>div:hover{
-    background-color: #afbdbd3d;
-    cursor: pointer;
+.profile-btn-wrapper > div:hover {
+  background-color: #afbdbd3d;
+  cursor: pointer;
 }
-.profile-btn-wrapper>div img{
-    width: 35px;
+.profile-btn-wrapper > div img {
+  width: 35px;
 }
-.profile-btn-wrapper>div>div{
-    display: flex;
-    align-items: center;
+.profile-btn-wrapper > div > div {
+  display: flex;
+  align-items: center;
 }
-.profile-btn-wrapper>div span{
-    font-size: 17px;
-    font-weight: 700;
-    margin-right:15px;
+.profile-btn-wrapper > div span {
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 15px;
 }
-.profile-arrow{
-    width: 18px !important;
+.profile-arrow {
+  width: 18px !important;
 }
-.profile-space-div{
-    width: 100%;
-    height: 25px !important;
-    background-color: #afbdbd62;
+.profile-space-div {
+  width: 100%;
+  height: 25px !important;
+  background-color: #afbdbd62;
+}
+@media only screen and (max-width: 600px) {
+  .profile-btn-wrapper > div img {
+    width: 25px;
+  }
+  .profile-btn-wrapper > div span {
+    font-size: 14px;
+  }
+  .profile-arrow {
+    width: 13px !important;
+    }
 }
