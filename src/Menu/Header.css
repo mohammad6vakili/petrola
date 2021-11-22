@@ -20,12 +20,16 @@
 .header-search {
   width: 35%;
 }
-.header-search > input {
-  width: 100%;
-  border-radius: 7px;
+.header-search > div {
+  width: 100% !important;
+  border-radius: 7px !important;
   border: 1px solid #3535353d;
-  height: 40px;
-  box-shadow: 3px 1px 10px rgba(53, 53, 53, 0.25);
+  height: 40px !important;
+  box-shadow: 3px 1px 10px rgba(53, 53, 53, 0.25) !important;
+}
+.header-search > div input,.header-search > div div{
+  border-radius: 7px !important;
+  border: none !important;
 }
 .header-links {
   width: 340px;
@@ -54,6 +58,9 @@
 .header-btn > button:focus {
   background-color: #353535;
   color: #ffc412;
+}
+.autocomplete-dropdown{
+  z-index: 9999999999 !important;
 }
 @media only screen and (max-width: 1000px) {
   .header-links {

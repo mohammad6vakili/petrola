@@ -8,11 +8,75 @@ import PinInput from 'react-pin-input';
 import { useHistory } from 'react-router';
 import Fa from "../../Constant/Fa.json";
 import { Button, Input } from 'antd';
+import axios from 'axios';
+import Env from "../../Constant/Env.json";
+import { toast } from 'react-toastify';
 
 
 const Login=()=>{
     const history=useHistory();
     const [status , setStatus]=useState(0);
+    const [mobile , setMobile]=useState("");
+    const [name , setName]=useState("");
+    const [loading , setLoading]=useState(false);
+
+    const getCode=async()=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/GetVerificationCode",{
+                username:mobile
+            });
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+            setStatus(2);
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+    
+    const checkVery=async(code)=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/checkverification",{
+                username:mobile,
+                code:code
+            });
+            console.log(response.data);
+            if(response.data.msg==="برای آگهی ثبت نام کنید"){
+                setStatus(3);
+                toast.success(response.data.msg,{
+                    position: toast.POSITION.BOTTOM_LEFT
+                });
+            }else{
+                history.push("/home");
+            }
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+
+    const registerReq=async()=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/Register",{
+                username:mobile,
+                name:name
+            });
+            history.push("/home");
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
 
     return(
         <div className="login">
@@ -32,8 +96,19 @@ const Login=()=>{
                             <img style={{width:"20px"}} src={loginMarkerMobile} alt="icon" />
                             <span style={{marginRight:"10px"}}>{Fa.loginTwoTitle}</span>
                         </div>
-                        <Input placeholder="091********" type="tel" />
-                        <Button onClick={()=>setStatus(2)}>{Fa.loginTwoBtn}</Button>
+                        <Input 
+                            value={mobile} 
+                            onChange={(e)=>setMobile(e.target.value)}  
+                            placeholder="091********" 
+                            type="tel" 
+                        />
+                        <Button 
+                            style={mobile.length<11 || mobile.length>11 ? {opacity:".5"}:{opacity:"1"}}
+                            disabled={mobile.length<11 || mobile.length>11} 
+                            onClick={getCode}
+                        >
+                            {Fa.loginTwoBtn}
+                        </Button>
                     </>
                 }
                 {status===2 &&
@@ -47,8 +122,7 @@ const Login=()=>{
                             style={{padding: '10px',marginTop:"15px",direction:"ltr"}}  
                             inputStyle={{border:"none",backgroundColor:"#051a211e",borderRadius:"6px",margin:"0 5px",width:"50px",height:"50px"}}
                             inputFocusStyle={{border:'1px solid rgba(255, 255, 255, 0.158)'}}
-                            // onChange={(value) =>dispatch(setVerifyCode(FormatHepler.toEnglishString(value)))}
-                            onComplete={()=>setStatus(3)}
+                            onComplete={(val)=>checkVery(val)}
                             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                         />
                         <Button>{Fa.loginThreeBtn}</Button>
@@ -57,8 +131,13 @@ const Login=()=>{
                 {status===3 &&
                     <>
                         <span style={{marginRight:"10px"}}>{Fa.loginFourTitle}</span>
-                        <Input placeholder={Fa.loginInputPlaceholder} type="text"/>
-                        <Button onClick={()=>history.push("/home")}>{Fa.loginFourBtn}</Button>
+                        <Input 
+                            value={name}
+                            onChange={(e)=>setName(e.target.value)} 
+                            placeholder={Fa.loginInputPlaceholder} 
+                            type="text"
+                        />
+                        <Button disabled={name.length<3} onClick={registerReq}>{Fa.loginFourBtn}</Button>
                     </>
                 }
             </div>
