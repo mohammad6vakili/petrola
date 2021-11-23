@@ -96,3 +96,6 @@ color: #FFC412 !important;
   display: flex;
   align-items: center;
 }
+.ant-spin-dot-item{
+  background-color: #353535 !important;
+}
