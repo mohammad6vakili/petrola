@@ -4,17 +4,23 @@ import Sidebar from "../../Menu/Sidebar";
 import Header from "../../Menu/Header";
 import Colors from '../../Helper/Colors';
 import { Spin } from 'antd';
-import noImage from "../../Assets/images/no_image.png";
-import savedImage from "../../Assets/images/saved.svg";
-import notSavedImage from "../../Assets/images/notsaved.svg";
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { setAdData } from '../../Store/Action';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Env from "../../Constant/Env.json";
+import noImage from "../../Assets/images/no_image.svg";
+import savedImage from "../../Assets/images/saved.svg";
+import notSavedImage from "../../Assets/images/notsaved.svg";
+
 
 
 const Home=()=>{
-
+    const dispatch=useDispatch();
+    const history=useHistory();
     const [newAds , setNewAds]=useState(null);
+    
 
     const getHomeData=async()=>{
         try{
@@ -26,6 +32,11 @@ const Home=()=>{
                 position: toast.POSITION.TOP_RIGHT
             });
         }
+    }
+
+    const goToSingle=(data)=>{
+        dispatch(setAdData(data));
+        history.push("/ads/view");
     }
 
     useEffect(()=>{
@@ -40,7 +51,7 @@ const Home=()=>{
                 {newAds ? 
                     <div className="home-ads-wrapper">
                         {newAds.map((data)=>(
-                            <div className="home-ads">
+                            <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
                                 <div>
                                     {data.img !=="https://app.petrola.ir/uploads/" ?
                                         <img src={data.img} alt="ads" />

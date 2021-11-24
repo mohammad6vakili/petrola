@@ -6,6 +6,8 @@ import logo from "../../Assets/images/logo.png";
 import loginMarkerMobile from "../../Assets/images/login-marker-mobile.svg";
 import PinInput from 'react-pin-input';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setProfile } from '../../Store/Action';
 import Fa from "../../Constant/Fa.json";
 import { Button, Input } from 'antd';
 import axios from 'axios';
@@ -15,12 +17,15 @@ import { toast } from 'react-toastify';
 
 const Login=()=>{
     const history=useHistory();
+    const dispatch=useDispatch();
     const [status , setStatus]=useState(0);
     const [mobile , setMobile]=useState("");
     const [name , setName]=useState("");
     const [loading , setLoading]=useState(false);
 
     const getCode=async()=>{
+        setLoading(true);
+        localStorage.setItem("username",mobile);
         try{
             const response=await axios.post(Env.baseUrl + "/GetVerificationCode",{
                 username:mobile
@@ -28,7 +33,24 @@ const Login=()=>{
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
+            setLoading(false);
             setStatus(2);
+        }catch(err){
+            console.log(err);
+            setLoading(false);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+    
+    const getProfileData=async()=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/GetUserInfo",{
+                username:"09193889161"
+            });
+            dispatch(setProfile(response.data.data));
+            console.log(response.data);
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -36,8 +58,9 @@ const Login=()=>{
             });
         }
     }
-    
+
     const checkVery=async(code)=>{
+        setLoading(true);
         try{
             const response=await axios.post(Env.baseUrl + "/checkverification",{
                 username:mobile,
@@ -49,11 +72,15 @@ const Login=()=>{
                 toast.success(response.data.msg,{
                     position: toast.POSITION.BOTTOM_LEFT
                 });
+                setLoading(false);
             }else{
+                getProfileData();
                 history.push("/home");
+                setLoading(false);
             }
         }catch(err){
             console.log(err);
+            setLoading(false);
             toast.error("خطا در برقراری ارتباط",{
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -61,22 +88,27 @@ const Login=()=>{
     }
 
     const registerReq=async()=>{
+        setLoading(true);
         try{
             const response=await axios.post(Env.baseUrl + "/Register",{
                 username:mobile,
                 name:name
             });
+            getProfileData();
             history.push("/home");
+            setLoading(false);
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
         }catch(err){
             console.log(err);
+            setLoading(false);
             toast.error("خطا در برقراری ارتباط",{
                 position: toast.POSITION.TOP_RIGHT
             });
         }
     }
+
 
     return(
         <div className="login">

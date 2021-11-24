@@ -135,7 +135,7 @@ const CompanyAgents=()=>{
                     <Input placeholder="نام و نام خانوادگی"/>
                     <Input type="tel" placeholder="شماره موبایل"/>
                     <TextArea placeholder="توضیحات"/>
-                    <div style={{width:"100%",display:"flex",justifyContent:"space-between",marginTop:"10px"}}>
+                    <div style={{width:"100%",display:"flex",justifyContent:"center",marginTop:"10px"}}>
                         <Button 
                             style={{width:"120px"}} 
                             onClick={()=>setModal(false)} 

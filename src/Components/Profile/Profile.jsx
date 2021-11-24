@@ -2,6 +2,7 @@ import React from 'react';
 import "./Profile.css";
 import Header from "../../Menu/Header";
 import {useHistory} from "react-router-dom";
+import {useSelector} from "react-redux";
 import avatarImage from "../../Assets/images/avatar.png";
 import arrowImage from "../../Assets/images/profileArrow.svg";
 import profileAd from "../../Assets/images/profile-ad.svg";
@@ -18,13 +19,14 @@ import profileArrowRed from "../../Assets/images/profile-arrow-red.svg";
 const Profile=()=>{
 
     const history=useHistory();
+    const profile=useSelector(state=>state.Reducer.profile);
 
     return(
         <div className="profile">
             <Header/>
             <div className="profile-top-banner">
                 <img src={avatarImage} alt="avatar"/>
-                <span>محمدعلی وکیلی دوست</span>
+                <span>{profile && profile.name}</span>
             </div>
             <div className="profile-btn-wrapper">
                 <div onClick={()=>history.push("/company/info")}>
@@ -65,16 +67,6 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                <div>
-                    <div>
-                        <img src={profileShare} alt="info" />
-                        <span>معرفی پترولا به همکاران</span>
-                    </div>
-                    <img className="profile-arrow" src={arrowImage} alt="arrow" />
-                </div>
-
-                <div className="profile-space-div"></div>
-
                 <div onClick={()=>history.push("/contact")}>
                     <div>
                         <img src={profileHead} alt="info" />
@@ -82,6 +74,16 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
+                {/* <div>
+                    <div>
+                        <img src={profileShare} alt="info" />
+                        <span>معرفی پترولا به همکاران</span>
+                    </div>
+                    <img className="profile-arrow" src={arrowImage} alt="arrow" />
+                </div> */}
+
+                <div className="profile-space-div"></div>
+
                 <div onClick={()=>history.push("/")}>
                     <div>
                         <img src={profileExit} alt="info" />

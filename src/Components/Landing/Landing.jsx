@@ -10,7 +10,8 @@ const Landing=()=>{
     return(
         <div className="landing">
             landing
-            <button onClick={()=>history.push("/login")}>login</button>
+            <button onClick={()=>history.push("/login")}>لاگین</button>
+            <button onClick={()=>history.push("/home")}>ورود مستقیم</button>
         </div>
     )
 }

@@ -153,7 +153,7 @@ const CompanyNews=()=>{
                     <Upload showUploadList={false} onChange={(e)=>setBannerImage(e.file.thumbUrl)}>
                         <Button className="company-submit-body-upload-btn">انتخاب تصویر خبر</Button>
                     </Upload>
-                    <div style={{width:"100%",display:"flex",justifyContent:"space-between",marginTop:"10px"}}>
+                    <div style={{width:"100%",display:"flex",justifyContent:"center",marginTop:"10px"}}>
                         <Button 
                             style={{width:"120px"}} 
                             onClick={()=>setModal(false)} 

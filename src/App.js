@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Switch , Route , useLocation} from "react-router-dom";
+import {Switch , Route , useLocation , Redirect} from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Home from './Components/Home/Home';
 import Vip from './Components/Vip/Vip';
 import Login from './Components/Login/Login';
@@ -13,13 +14,15 @@ import CompanySubmit from './Pages/Profile/CompanySubmit';
 import CompanyNews from './Pages/Profile/CompanyNews';
 import CompanyAgents from "./Pages/Profile/CompanyAgents";
 import CreateAd from './Pages/Ads/CreateAd';
+import ViewAd from './Pages/Ads/ViewAd';
 import Draft from './Pages/Profile/Draft';
 import MobileMenu from './Menu/MobileMenu';
 
 
 const App=()=>{
-
+  
   const location=useLocation();
+  const adData=useSelector(state=>state.Reducer.adData);
 
   return (
     <div className="App">
@@ -37,6 +40,7 @@ const App=()=>{
         <Route path="/company/submit" component={CompanySubmit} />
         <Route path="/company/news" component={CompanyNews} />
         <Route path="/company/agents" component={CompanyAgents} />
+        {adData!==null ? <Route path="/ads/view" component={ViewAd} />:<Redirect to="/home" />}
       </Switch>
       {location.pathname!=="/" && location.pathname!=="/login" && <MobileMenu/>}
     </div>

@@ -99,3 +99,8 @@ color: #FFC412 !important;
 .ant-spin-dot-item{
   background-color: #353535 !important;
 }
+@media only screen and (max-width:1000px){
+  .App{
+    padding-bottom: 11vh;
+  }
+}

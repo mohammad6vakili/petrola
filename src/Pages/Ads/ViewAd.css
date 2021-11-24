@@ -1,0 +1,119 @@
+.view-ad {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.view-ad-first {
+  width: 100%;
+  display: flex;
+}
+.view-ad-first > div {
+  width: 50%;
+  height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view-ad-first > div:nth-child(2) {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.view-ad-first > div > img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.view-ad-first > div > div {
+  display: flex;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.view-ad-first > div > div > div {
+  width: 90px;
+  height: 27px;
+  font-size: 14px;
+  margin: 0 10px;
+  border-radius: 30px;
+  color: #353535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.view-ad-first > div > div > img {
+  margin: 0 10px;
+}
+.view-ad-second {
+  width: 97%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.view-ad-second > div {
+  width: 50%;
+  padding: 5px 15px;
+  min-width: 300px;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.view-ad-third {
+  width: 97%;
+  display: flex;
+  padding: 20px 10px 40px 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.view-ad-fourth {
+  width: 100%;
+  display: flex;
+  padding: 20px 0 40px 0;
+  justify-content: center;
+}
+@media only screen and (max-width: 1000px) {
+  .view-ad-first {
+    flex-direction: column;
+  }
+  .view-ad-first > div {
+    width: 100%;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .view-ad-first > div:nth-child(2) {
+    height: 25vh;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .view-ad-first > div {
+    padding: 15px;
+  }
+  .view-ad-first > div:nth-child(1) {
+    margin-bottom: 20px;
+  }
+  .view-ad-first > div > div {
+    font-size: 14px;
+  }
+  .view-ad-third {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .view-ad-first > div > img {
+    height: 70%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .view-ad-first > div > img {
+    height: 50%;
+  }
+  .view-ad-first > div {
+    height: unset;
+    padding: 15px;
+  }
+}
