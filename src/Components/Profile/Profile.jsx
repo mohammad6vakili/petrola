@@ -26,7 +26,7 @@ const Profile=()=>{
             <Header/>
             <div className="profile-top-banner">
                 <img src={avatarImage} alt="avatar"/>
-                <span>{profile && profile.name}</span>
+                <span>{profile.name}</span>
             </div>
             <div className="profile-btn-wrapper">
                 <div onClick={()=>history.push("/company/info")}>

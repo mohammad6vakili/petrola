@@ -1,23 +1,23 @@
 import {
-    SIDE,
     AD_DATA,
-    PROFILE
+    PROFILE,
+    CATEGORY
 } from "./Action";
 
 const initialState = {
-    side:null,
     adData:null,
-    profile:null
+    profile:null,
+    category:null
 };
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SIDE:
-      return { ...state, side: action.payload };
     case AD_DATA:
       return {...state, adData: action.payload};
     case PROFILE:
       return {...state , profile: action.payload};
+    case CATEGORY:
+      return {...state , category: action.payload};
     default:
       return state;
   }

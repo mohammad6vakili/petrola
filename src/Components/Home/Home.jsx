@@ -6,7 +6,8 @@ import Colors from '../../Helper/Colors';
 import { Spin } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setAdData } from '../../Store/Action';
+import { setProfile } from '../../Store/Action';
+import { setAdData  , setCategory} from '../../Store/Action';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Env from "../../Constant/Env.json";
@@ -26,6 +27,23 @@ const Home=()=>{
         try{
             const response=await axios.post(Env.baseUrl + "/GetHomeData",{});
             setNewAds(response.data.data.newAds);
+            dispatch(setCategory(response.data.data.categories));
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
+    }
+
+    const getProfileData=async()=>{
+        const username = localStorage.getItem("username");
+        try{
+            const response=await axios.post(Env.baseUrl + "/GetUserInfo",{
+                username:username
+            });
+            dispatch(setProfile(response.data.data));
+            console.log(response.data);
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -41,14 +59,16 @@ const Home=()=>{
 
     useEffect(()=>{
         getHomeData();
+        getProfileData();
     },[])
 
     return(
         <div className="home">
-            <Header/>
-            <Sidebar/>
-            <div className="home-body">
-                {newAds ? 
+            {newAds ?     
+            <>
+                <Header/>
+                <Sidebar/>
+                <div className="home-body">
                     <div className="home-ads-wrapper">
                         {newAds.map((data)=>(
                             <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
@@ -79,10 +99,11 @@ const Home=()=>{
                             </div>
                         ))}
                     </div>
-                :
-                    <Spin size="large" />
-                }
             </div>
+        </>    
+        :
+        <Spin style={{margin:"48vh 48%"}} size="large" />
+        }
         </div>
     )
 }

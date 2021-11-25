@@ -27,6 +27,7 @@
 .view-ad-first > div > img {
   max-width: 100% !important;
   max-height: 100% !important;
+  border: 1px solid rgba(128, 128, 128, 0.288);
 }
 .view-ad-first > div > div {
   display: flex;
@@ -55,10 +56,11 @@
   justify-content: flex-start;
 }
 .view-ad-second > div {
-  width: 50%;
-  padding: 5px 15px;
+  width: 100%;
+  border-bottom:1px solid #3535351c;
+  padding: 30px 15px;
   min-width: 300px;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   font-size: 18px;
   font-weight: 700;
 }
@@ -74,6 +76,22 @@
   display: flex;
   padding: 20px 0 40px 0;
   justify-content: center;
+}
+.column-seperator{
+  width: 98%;
+  margin: 40px 0;
+  display: flex;
+  color: gray;
+  flex-direction: column;
+}
+.column-seperator>span{
+  font-size: 14px;
+}
+.column-seperator>div{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.425);
+  margin-top: 10px;
 }
 @media only screen and (max-width: 1000px) {
   .view-ad-first {

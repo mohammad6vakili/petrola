@@ -1,16 +1,8 @@
-export const SIDE="SIDE";
 export const AD_DATA="AD_DATA";
 export const PROFILE="PROFILE";
+export const CATEGORY="CATEGORY";
 
 
-export const setSide=(data)=>{
-    return(
-        {
-            type:SIDE,
-            payload:data
-        }
-    )
-}
 export const setAdData=(data)=>{
     return(
         {
@@ -23,6 +15,14 @@ export const setProfile=(data)=>{
     return(
         {
             type:PROFILE,
+            payload:data
+        }
+    )
+}
+export const setCategory=(data)=>{
+    return(
+        {
+            type:CATEGORY,
             payload:data
         }
     )

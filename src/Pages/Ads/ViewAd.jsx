@@ -56,9 +56,8 @@ const ViewAd=()=>{
                     </div>
                 </div>
             </div>
-            <div style={{width:"98%",marginBottom:"20px"}} className="create-ad-step-two-seperate">
-                <span style={{width:"250px",textAlign:"right",fontSize:"12px"}}>مشخصات فنی</span>
-                <div></div>
+            <div className="column-seperator">
+                <span>مشخصات فنی</span>
                 <div></div>
             </div>
             <div className="view-ad-second">
@@ -69,15 +68,14 @@ const ViewAd=()=>{
                 <div>ظرفیت : {data.capacity!=="" ? data.capacity +" "+ data.capacityUnit : "---"}</div>
                 <div>اندازه : {data.size!=="" ? data.size +" "+ data.sizeUnit : "---"}</div>
                 <div>متریال : {data.material!=="" ? data.material : "---"}</div>
-                <div>قیمت :  
+                <div style={{borderBottom:"none"}}>قیمت :  
                     {data.price==="" && " ---"}
                     {data.price==="0" && " توافقی"}
                     {data.price!=="0" && data.price!=="" && data.price}
                 </div>
             </div>
-            <div style={{width:"98%",marginBottom:"20px"}} className="create-ad-step-two-seperate">
-                <span style={{width:"630px",textAlign:"right",fontSize:"12px"}}>توضیحات بیشتر در مورد محصول</span>
-                <div></div>
+            <div className="column-seperator">
+                <span>توضیحات بیشتر در مورد محصول</span>
                 <div></div>
             </div>
             <div className="view-ad-third">

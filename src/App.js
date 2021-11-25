@@ -23,6 +23,8 @@ const App=()=>{
   
   const location=useLocation();
   const adData=useSelector(state=>state.Reducer.adData);
+  const category=useSelector(state=>state.Reducer.category);
+  const profile=useSelector(state=>state.Reducer.profile);
 
   return (
     <div className="App">
@@ -31,15 +33,15 @@ const App=()=>{
         <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/vip" component={Vip} />
-        <Route path="/ads/create" component={CreateAd} />
         <Route path="/chat" component={Chat} />
-        <Route path="/profile" component={Profile} />
         <Route path="/contact" component={ContactUs} />
         <Route path="/draft" component={Draft} />
         <Route path="/company/info" component={CompanyInfo} />
         <Route path="/company/submit" component={CompanySubmit} />
         <Route path="/company/news" component={CompanyNews} />
         <Route path="/company/agents" component={CompanyAgents} />
+        {category!==null ? <Route path="/ads/create" component={CreateAd} />:<Redirect to="/home" />}
+        {profile!==null ? <Route path="/profile" component={Profile} />:<Redirect to="/login" />}
         {adData!==null ? <Route path="/ads/view" component={ViewAd} />:<Redirect to="/home" />}
       </Switch>
       {location.pathname!=="/" && location.pathname!=="/login" && <MobileMenu/>}

@@ -6,8 +6,6 @@ import logo from "../../Assets/images/logo.png";
 import loginMarkerMobile from "../../Assets/images/login-marker-mobile.svg";
 import PinInput from 'react-pin-input';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { setProfile } from '../../Store/Action';
 import Fa from "../../Constant/Fa.json";
 import { Button, Input } from 'antd';
 import axios from 'axios';
@@ -17,7 +15,6 @@ import { toast } from 'react-toastify';
 
 const Login=()=>{
     const history=useHistory();
-    const dispatch=useDispatch();
     const [status , setStatus]=useState(0);
     const [mobile , setMobile]=useState("");
     const [name , setName]=useState("");
@@ -44,20 +41,6 @@ const Login=()=>{
         }
     }
     
-    const getProfileData=async()=>{
-        try{
-            const response=await axios.post(Env.baseUrl + "/GetUserInfo",{
-                username:"09193889161"
-            });
-            dispatch(setProfile(response.data.data));
-            console.log(response.data);
-        }catch(err){
-            console.log(err);
-            toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
-            });
-        }
-    }
 
     const checkVery=async(code)=>{
         setLoading(true);
@@ -74,7 +57,6 @@ const Login=()=>{
                 });
                 setLoading(false);
             }else{
-                getProfileData();
                 history.push("/home");
                 setLoading(false);
             }
@@ -94,7 +76,6 @@ const Login=()=>{
                 username:mobile,
                 name:name
             });
-            getProfileData();
             history.push("/home");
             setLoading(false);
             toast.success(response.data.msg,{
