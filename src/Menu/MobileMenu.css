@@ -6,7 +6,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 100000000000000000000;
+  z-index: 100000000;
   background-color: white;
   border-top: 1px solid #3535353d;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.319);

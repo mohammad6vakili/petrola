@@ -93,7 +93,7 @@ const CreateAd=()=>{
         }else{
             try{
                 const response=await axios.post(Env.baseUrl + "/newAds",{
-                    username:username,
+                    username:"09137000570",
                     id:"-1",
                     regDate:d,
                     regTime:d.getTime().toString(),
@@ -121,7 +121,7 @@ const CreateAd=()=>{
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 }else{
-                    history.push("/draft")
+                    history.push("/draft");
                 }
             }catch(err){
                 console.log(err);
@@ -214,7 +214,7 @@ const CreateAd=()=>{
                         <div>تصویر آگهی</div>
                         <div>برای آگهی خود یک تصویر مناسب انتخاب کنید.آگهی های دارای تصویر بیشتر مورد توجه کاربران قرار میگیرند.</div>
                         <div style={{flexDirection:"column",alignItems:"center",marginTop:"50px"}}>
-                            {imageList!==null ?                            
+                            {imageList!==null ?
                                 <img src={imageList} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
                             :
                                 <img src={uploadImage} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />

@@ -21,6 +21,11 @@ const Profile=()=>{
     const history=useHistory();
     const profile=useSelector(state=>state.Reducer.profile);
 
+    const logout=()=>{
+        localStorage.clear();
+        history.push("/");
+    }
+
     return(
         <div className="profile">
             <Header/>
@@ -43,7 +48,7 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                <div>
+                <div onClick={()=>history.push("/draft")}>
                     <div>
                         <img src={profilePen} alt="info" />
                         <span>پیش نویس ها</span>
@@ -60,7 +65,7 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                <div>
+                <div onClick={()=>history.push("/transactions")}>
                     <div>
                         <img src={profileCart} alt="info" />
                         <span>سوابق پرداخت ها</span>
@@ -84,7 +89,7 @@ const Profile=()=>{
 
                 <div className="profile-space-div"></div>
 
-                <div onClick={()=>history.push("/")}>
+                <div onClick={logout}>
                     <div>
                         <img src={profileExit} alt="info" />
                         <span style={{color:"red"}}>خروج از حساب کاربری</span>

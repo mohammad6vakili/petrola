@@ -31,7 +31,7 @@ const Home=()=>{
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.BOTTOM_LEFT
             });
         }
     }
@@ -47,7 +47,7 @@ const Home=()=>{
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.BOTTOM_LEFT
             });
         }
     }

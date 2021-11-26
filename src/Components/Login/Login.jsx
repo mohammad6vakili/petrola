@@ -36,7 +36,7 @@ const Login=()=>{
             console.log(err);
             setLoading(false);
             toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.BOTTOM_LEFT
             });
         }
     }
@@ -64,7 +64,7 @@ const Login=()=>{
             console.log(err);
             setLoading(false);
             toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.BOTTOM_LEFT
             });
         }
     }
@@ -85,7 +85,7 @@ const Login=()=>{
             console.log(err);
             setLoading(false);
             toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.TOP_RIGHT
+                position: toast.POSITION.BOTTOM_LEFT
             });
         }
     }
