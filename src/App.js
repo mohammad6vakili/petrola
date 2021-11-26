@@ -18,6 +18,7 @@ import ViewAd from './Pages/Ads/ViewAd';
 import Draft from './Pages/Profile/Draft';
 import MobileMenu from './Menu/MobileMenu';
 import Transactions from './Pages/Profile/Transactions';
+import Permissions from "./Pages/Profile/Permissions";
 
 
 const App=()=>{
@@ -41,6 +42,7 @@ const App=()=>{
         <Route path="/company/submit" component={CompanySubmit} />
         <Route path="/company/news" component={CompanyNews} />
         <Route path="/company/agents" component={CompanyAgents} />
+        <Route path="/company/permissions" component={Permissions} />
         <Route path="/transactions" component={Transactions} />
         {category!==null ? <Route path="/ads/create" component={CreateAd} />:<Redirect to="/home" />}
         {profile!==null ? <Route path="/profile" component={Profile} />:<Redirect to="/login" />}

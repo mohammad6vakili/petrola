@@ -98,7 +98,7 @@ const CompanyInfo=()=>{
                             <span>اخبار</span>
                             <img src={goldArrow} alt="arrow" />
                         </div>
-                        <div>
+                        <div onClick={()=>history.push("/company/permissions")}>
                             <span>مجوزها</span>
                             <img src={goldArrow} alt="arrow" />
                         </div>

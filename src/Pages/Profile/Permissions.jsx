@@ -11,25 +11,24 @@ import { toast } from 'react-toastify';
 const {TextArea}=Input;
 
 
-const CompanyNews=()=>{
-    const [news , setNews]=useState([]);
+const Permissions=()=>{
+    const [permissions , setPermissions]=useState([]);
     const [modal , setModal]=useState(false);
     const [uploadRef , setUploadRef]=useState(null);
     const [imageList , setImageList]=useState(null);
     const [isImageList , setIsImageList]=useState(false);
     
-    const [sub , setSub]=useState("");
-    const [text , setText]=useState("");
+    const [name , setName]=useState("");
     const [fileList , setFileList]=useState(null);
 
 
-    const getNews=async()=>{
+    const getPermission=async()=>{
         const username = localStorage.getItem("username");
         try{
-            const response=await axios.post(Env.baseUrl + "/GetNews",{
+            const response=await axios.post(Env.baseUrl + "/GetPermission",{
                 username:username
             });
-            setNews(response.data.data);
+            setPermissions(response.data.data);
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -38,29 +37,26 @@ const CompanyNews=()=>{
         }
     }
 
-    const createNews=async()=>{
-        let d = new Date();
+    const createPermission=async()=>{
         const username = localStorage.getItem("username");
         // const postData = new FormData();
         // postData.append("id","-1");
         // postData.append("username",username);
-        // postData.append("subject",sub);
-        // postData.append("text",text);
+        // postData.append("name",name);
         // postData.append("img",fileList);
 
         try{
-            const response=await axios.post(Env.baseUrl + "/RegisterNews",{
-                id: "-1",
+            const response=await axios.post(Env.baseUrl + "/RegisterPermission",{
+                id:"-1",
                 username:username,
-                subject:sub,
-                image:"",
-                text:text  
+                name:name,
+                img:""
             });
             setModal(false);
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
-            getNews();
+            getPermission();
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -82,7 +78,7 @@ const CompanyNews=()=>{
     };
 
     useEffect(()=>{
-        getNews();
+        getPermission();
     },[])
 
     useEffect(()=>{
@@ -94,18 +90,17 @@ const CompanyNews=()=>{
         <div className="company-news">
             <Header/>
             <div className="company-news-head">
-                <span>اخبار شرکت</span>
-                <Button onClick={()=>setModal(true)} className="company-submit-btn">+ ثبت خبر</Button>
+                <span>مجوز های شرکت</span>
+                <Button onClick={()=>setModal(true)} className="company-submit-btn">+ ثبت مجوز</Button>
             </div>
             <div className="company-news-items">
-                {news.length===0 ?
-                    <Button style={{marginTop:"25vh"}} className="btn-dark">هیج خبری ثبت نکردید</Button>
+                {permissions.length===0 ?
+                    <Button style={{marginTop:"25vh"}} className="btn-dark">هیج مجوزی ثبت نکردید</Button>
                 :
-                news.length>0 && news.map((data)=>(
-                    <div>
+                permissions.length>0 && permissions.map((data)=>(
+                    <div style={{height:"200px"}}>
                         {data.img === "https://app.petrola.ir/uploads/" ? <></> : <img src={data.img} alt="news" />}
-                        <div style={{fontWeight:"700",fontSize:"17px"}}>{data.title}</div>
-                        <div>{data.desc}</div>
+                        <div style={{fontWeight:"700",fontSize:"17px"}}>{data.name}</div>
                         <div style={{width:"100%",display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"auto"}}>
                             <div style={{display:"flex"}}>
                                 <Button>
@@ -115,17 +110,13 @@ const CompanyNews=()=>{
                                     <img src={trashImage} alt="delete"/>
                                 </Button>
                             </div>
-                            <div style={{display:"flex",flexDirection:"column",alignItems:"center",fontSize:"12px"}}>
-                                <span>{data.date}</span>
-                                <span>{data.time}</span>
-                            </div>
                         </div>
                     </div>
                 ))
                 }
             </div>
             <Modal 
-                title="ثبت خبر"
+                title="ثبت مجوز"
                 visible={modal} 
                 onOk={()=>setModal(false)} 
                 onCancel={()=>setModal(false)}
@@ -133,8 +124,7 @@ const CompanyNews=()=>{
                 closable={false}
             >
                 <div className="company-news-modal">
-                    <Input value={sub} onChange={(e)=>setSub(e.target.value)} placeholder="عنوان خبر"/>
-                    <TextArea value={text} onChange={(e)=>setText(e.target.value)} placeholder="متن خبر"/>
+                    <Input value={name} onChange={(e)=>setName(e.target.value)} placeholder="نام مجوز"/>
                     {imageList===null ?
                         <div className="company-news-default-upload">تصویر</div>
                     :                            
@@ -147,11 +137,11 @@ const CompanyNews=()=>{
                         style={{display:"none"}}
                         ref={(fileInput)=>setUploadRef(fileInput)}    
                     />
-                    <Button onClick={()=>uploadRef.click()} className="company-submit-body-upload-btn">انتخاب تصویر خبر</Button>
+                    <Button onClick={()=>uploadRef.click()} className="company-submit-body-upload-btn">انتخاب تصویر مجوز</Button>
                     <div style={{width:"100%",display:"flex",justifyContent:"center",marginTop:"10px"}}>
                         <Button 
                             style={{width:"120px"}} 
-                            onClick={createNews} 
+                            onClick={createPermission} 
                             className="btn-dark"
                         >تایید</Button>
                         <Button 
@@ -165,4 +155,4 @@ const CompanyNews=()=>{
         </div>
     )
 }
-export default CompanyNews;
+export default Permissions;

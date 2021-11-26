@@ -7,8 +7,9 @@
   justify-content: space-around;
 }
 .company-agents-items > div {
-  width: 25%;
-  height: 350px;
+  width: 23%;
+  min-width: 300px;
+  height: 320px;
   margin: 10px 30px;
   font-size: 14px;
   border-radius: 4px;
@@ -24,7 +25,8 @@
 }
 .company-agents-items > div > img {
   width: 30% !important;
-  border-radius: 4px 4px 0 0;
+  height: 30% !important;
+  border-radius: 50%;
 }
 .company-agents-items > div button {
   background-color: #ffc412;

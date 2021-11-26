@@ -12,8 +12,6 @@ const {TextArea}=Input;
 const CompanySubmit=()=>{
     const history=useHistory();
     const [step , setStep]=useState(1);
-    const [logoImage , setLogoImage]=useState(null);
-    const [bannerImage , setBannerImage]=useState(null);
     const [uploadRefOne , setUploadRefOne]=useState(null);
     const [imageListOne , setImageListOne]=useState(null);
     const [isImageListOne , setIsImageListOne]=useState(false);

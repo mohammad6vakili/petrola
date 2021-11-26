@@ -44,7 +44,11 @@ color: #FFC412 !important;
   text-align: center;
   font-weight: 700 !important;
 }
+.ant-modal-wrap{
+  z-index: 5646552652 !important;
+}
 .ant-modal{
+  margin-bottom: 100px !important;
   border-radius: 10px !important;
 }
 .ant-menu {

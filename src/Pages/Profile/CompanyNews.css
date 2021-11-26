@@ -36,8 +36,12 @@
 }
 .company-news-items > div {
   width: 25%;
+  min-width: 300px;
+  overflow: auto;
   height: 250px;
   margin: 10px 30px;
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   border-radius: 4px;
   background-color: white;
@@ -48,7 +52,12 @@
 }
 .company-news-items > div > img {
   width: 100%;
+  height: 35% !important;
   border-radius: 4px 4px 0 0;
+  scrollbar-width: none !important;
+}
+.company-news-items > div::-webkit-scrollbar {
+  display: none !important;
 }
 .company-news-items > div button {
   background-color: #ffc412;
