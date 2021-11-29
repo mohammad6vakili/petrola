@@ -39,19 +39,14 @@ const Permissions=()=>{
 
     const createPermission=async()=>{
         const username = localStorage.getItem("username");
-        // const postData = new FormData();
-        // postData.append("id","-1");
-        // postData.append("username",username);
-        // postData.append("name",name);
-        // postData.append("img",fileList);
+        const postData = new FormData();
+        postData.append("id","-1");
+        postData.append("username",username);
+        postData.append("name",name);
+        postData.append("img",fileList===null?"":fileList);
 
         try{
-            const response=await axios.post(Env.baseUrl + "/RegisterPermission",{
-                id:"-1",
-                username:username,
-                name:name,
-                img:""
-            });
+            const response=await axios.post(Env.baseUrl + "/RegisterPermission",postData);
             setModal(false);
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT

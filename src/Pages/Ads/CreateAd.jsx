@@ -86,36 +86,36 @@ const CreateAd=()=>{
     const newAdReq=async()=>{
         let d = new Date();
         const username=localStorage.getItem("username");
+        const postData=new FormData();
         if(persianName===""){
             toast.warning("لطفا نام فارسی را وارد کنید",{
                 position: toast.POSITION.BOTTOM_LEFT
             });
         }else{
+            postData.append("username",username);
+            postData.append("id","-1");
+            postData.append("type",type);
+            postData.append("vip",type==="1"?vip.toString():"0");
+            postData.append("title",persianName);
+            postData.append("persianName",persianName);
+            postData.append("englishName",englishName);
+            postData.append("count",count);
+            postData.append("category",selectParent);
+            postData.append("countUnit",countUnit);
+            postData.append("capacity",capacity);
+            postData.append("capacityUnit",capacityUnit);
+            postData.append("size",size);
+            postData.append("sizeUnit",sizeUnit);
+            postData.append("pClass",clas);
+            postData.append("standards",standards);
+            postData.append("material",material);
+            postData.append("producer",producer);
+            postData.append("price",price);
+            postData.append("status","0");
+            postData.append("desc",desc);
+            postData.append("img",fileList===null?"":fileList);
             try{
-                const response=await axios.post(Env.baseUrl + "/newAds",{
-                    username:"09137000570",
-                    id:"-1",
-                    regDate:d,
-                    regTime:d.getTime().toString(),
-                    type:type,
-                    vip:type==="1"?vip.toString():"",
-                    title:persianName,
-                    persianName:persianName,
-                    englishName:englishName,
-                    count:count,
-                    countUnit:countUnit,
-                    capacity:capacity,
-                    capacityUnit:capacityUnit,
-                    size:size,
-                    sizeUnit:sizeUnit,
-                    pClass:clas,
-                    standards:standards,
-                    material:material,
-                    producer:producer,
-                    price:price,
-                    desc:desc,
-                    img:fileList===null?"":fileList
-                });
+                const response=await axios.post(Env.baseUrl + "/newAds",postData);
                 if(response.data.msg==="خطایی رخ داده است "){
                     toast.error(response.data.msg,{
                         position: toast.POSITION.BOTTOM_LEFT

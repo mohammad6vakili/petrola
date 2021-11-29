@@ -42,23 +42,16 @@ const CompanyAgents=()=>{
 
     const createAgent=async()=>{
         const username = localStorage.getItem("username");
-        // const postData = new FormData();
-        // postData.append("id","-1");
-        // postData.append("username",username);
-        // postData.append("name",name);
-        // postData.append("tel",tel);
-        // postData.append("address",address);
-        // postData.append("img",fileList);
+        const postData = new FormData();
+        postData.append("id","-1");
+        postData.append("username",username);
+        postData.append("name",name);
+        postData.append("tel",tel);
+        postData.append("address",address);
+        postData.append("img",fileList===null?"":fileList);
 
         try{
-            const response=await axios.post(Env.baseUrl + "/RegisterBranch",{
-                id:"-1",
-                username:username,
-                name:name,
-                tel:tel,
-                address:address,
-                img:""
-            });
+            const response=await axios.post(Env.baseUrl + "/RegisterBranch",postData);
             setModal(false);
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT

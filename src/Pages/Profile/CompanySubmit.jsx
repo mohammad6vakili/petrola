@@ -57,16 +57,17 @@ const CompanySubmit=()=>{
 
     const submitCompany=async()=>{
         const username = localStorage.getItem("username");
-        // const postData = new FormData();
-        // postData.append("username",username);
-        // postData.append("name",name);
-        // postData.append("tel",tel);
-        // postData.append("email",email);
-        // postData.append("address",address);
-        // postData.append("fax",fax);
-        // postData.append("desc",desc);
-        // postData.append("logo","");
-        // postData.append("img","");
+        const postData = new FormData();
+        postData.append("username",username);
+        postData.append("name",name);
+        postData.append("tel",tel);
+        postData.append("email",email);
+        postData.append("address",address);
+        postData.append("fax",fax);
+        postData.append("desc",desc);
+        postData.append("logo",fileListOne===null?"":fileListOne);
+        postData.append("img",fileListTwo===null?"":fileListTwo);
+
         if(name===""){
             toast.warning("لطفا نام شرکت را وارد کنید",{
                 position: toast.POSITION.BOTTOM_LEFT
@@ -81,17 +82,7 @@ const CompanySubmit=()=>{
             window.scrollTo(0,0);
         }else{
             try{
-                const response=await axios.post(Env.baseUrl + "/GetUserInfo",{
-                    username:username,
-                    name:name,
-                    tel:tel,
-                    email:email,
-                    address:address,
-                    fax:fax,
-                    desc:desc,
-                    logo:"",
-                    img:""
-                });
+                const response=await axios.post(Env.baseUrl + "/RegisterCompany",postData);
                 console.log(response.data);
                 toast.success(response.data.msg,{
                     position: toast.POSITION.BOTTOM_LEFT
