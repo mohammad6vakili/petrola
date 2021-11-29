@@ -4,10 +4,10 @@ import Sidebar from "../../Menu/Sidebar";
 import Header from "../../Menu/Header";
 import Colors from '../../Helper/Colors';
 import { Spin } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router';
 import { setProfile } from '../../Store/Action';
-import { setAdData  , setCategory} from '../../Store/Action';
+import { setAdData  , setCategory , setFilter , setIsFilter} from '../../Store/Action';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Env from "../../Constant/Env.json";
@@ -20,8 +20,13 @@ import notSavedImage from "../../Assets/images/notsaved.svg";
 const Home=()=>{
     const dispatch=useDispatch();
     const history=useHistory();
-    const [newAds , setNewAds]=useState(null);
-    
+    const filter=useSelector(state=>state.Reducer.filter);
+    const checkFil=useSelector(state=>state.Reducer.checkFil);
+    const isFilter=useSelector(state=>state.Reducer.isFilter);
+
+    const [newAds , setNewAds]=useState([]);
+    const [filAds , setFilAds]=useState([]);
+
 
     const getHomeData=async()=>{
         try{
@@ -59,18 +64,56 @@ const Home=()=>{
 
     useEffect(()=>{
         getHomeData();
+        console.log(isFilter);
+        console.log(filter);
         getProfileData();
     },[])
 
+    useEffect(async()=>{
+        let array=[];
+        if(newAds){
+            newAds.map((data)=>{
+                if(data.category===filter){
+                    array.push(data);
+                }
+            })
+        }
+        setFilAds(array);
+        if(array.length>0){
+            dispatch(setIsFilter(true));
+        }else if(array.length===0){
+            dispatch(setIsFilter(false));
+        }
+    },[filter]);
+
+    useEffect(async()=>{
+        let array=[];
+        if(newAds){
+            newAds.map((ads)=>{
+                checkFil.map((fil)=>{
+                    if(ads.type===fil){
+                        array.push(ads);
+                    }
+                })
+            })
+            setFilAds(array);
+            if(array.length>0){
+                dispatch(setIsFilter(true));
+            }else if(array.length===0){
+                dispatch(setIsFilter(false));
+            }
+        }
+    },[checkFil]);
+
     return(
         <div className="home">
-            {newAds ?     
+            {newAds.length>0 ?     
             <>
                 <Header/>
                 <Sidebar/>
                 <div className="home-body">
                     <div className="home-ads-wrapper">
-                        {newAds.map((data)=>(
+                        {isFilter===true ? filAds.map((data)=>(
                             <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
                                 <div>
                                     {data.img !=="https://app.petrola.ir/uploads/" ?
@@ -97,7 +140,37 @@ const Home=()=>{
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        ))
+                    :
+                    newAds.map((data)=>(
+                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
+                            <div>
+                                {data.img !=="https://app.petrola.ir/uploads/" ?
+                                    <img src={data.img} alt="ads" />
+                                :
+                                    <img src={noImage} alt="no image" />
+                                }
+                            </div>
+                            <div>
+                                <span>{data.persianName}</span>
+                                <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
+                                <div className="home-ads-infos">
+                                    <div style={{backgroundColor:Colors.gold}}>
+                                        {data.isVip==="0" && "عادی"}
+                                        {data.isVip==="1" && "ویژه"}
+                                        {data.isVip==="2" && "آماده تحویل"}
+                                    </div>
+                                    <div style={{backgroundColor:Colors.gray}}>
+                                        {data.type==="0" && "خرید"}
+                                        {data.type==="1" && "فروش"}
+                                        {data.type==="2" && "خدمات"}
+                                    </div>
+                                    <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                    }
                     </div>
             </div>
         </>    

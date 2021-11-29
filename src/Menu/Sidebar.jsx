@@ -3,6 +3,7 @@ import Colors from "../Helper/Colors";
 import "./Sidebar.css";
 import { Menu,Checkbox, Spin } from 'antd';
 import { useDispatch , useSelector} from 'react-redux';
+import { setFilter , setCheckFil} from '../Store/Action';
 import backImage from "../Assets/images/side-back.svg";
 
 
@@ -10,13 +11,10 @@ const Sidebar=()=>{
     
     const dispatch=useDispatch();
     const [step , setStep]=useState(0);
-    const [parent , setParent]=useState([]);
-    const [child , setChild]=useState([]);
     const [selectParent , setSelectParent]=useState(null);
     const category=useSelector(state=>state.Reducer.category);
 
     const showChild=(data)=>{
-        console.log(data.child);
         if(data.child==="0"){
             setSelectParent(data.id);
         }else if(data.child!=="0"){
@@ -25,25 +23,16 @@ const Sidebar=()=>{
         }
     }
 
-    useEffect(()=>{
-        if(category){
-            category.map((cat)=>{
-                if(cat.parent==="0"){
-                    parent.push(cat);
-                }else{
-                    child.push(cat);
-                }
-            })
-        }
-    },[category])
 
     return(
         <div className="sidebar">
             <div className="sidebar-title">فیلتر بر اساس نوع آگهی</div>
             <div style={{display:"flex",flexDirection:"column",padding:"0 15px 15px 15px"}}>
-                <Checkbox>خرید</Checkbox>
-                <Checkbox>فروش</Checkbox>
-                <Checkbox>خدمات</Checkbox>
+                <Checkbox.Group style={{display:"flex",flexDirection:"column"}} onChange={(value)=>dispatch(setCheckFil(value))}>
+                    <Checkbox value="0">خرید</Checkbox>
+                    <Checkbox value="1">فروش</Checkbox>
+                    <Checkbox value="2">خدمات</Checkbox>
+                </Checkbox.Group>
             </div>
             <div className="sidebar-title">
                 {step!==0 && 
@@ -54,6 +43,7 @@ const Sidebar=()=>{
                 <div style={{width:"100%"}}>
                     <Menu
                         mode="inline"
+                        onClick={(val)=>dispatch(setFilter(val.domEvent.target.innerText))}
                         style={{
                             color:Colors.dark,
                             width: "100%",
@@ -91,6 +81,7 @@ const Sidebar=()=>{
                             if(data.parent===selectParent){
                                 return <Menu.Item
                                         key={data.id}
+                                        // onClick={()=>dispatch(setFilter(data.name))}
                                     >
                                         {data.img ==="https://app.petrola.ir/uploads/" ?
                                             <div></div>

@@ -77,6 +77,7 @@
 .create-ad-step-two-mini-form > input,
 .create-ad-step-two-mini-form > div {
   width: 25%;
+  min-width: 130px;
   height: 50px;
 }
 .cats-modal-body {
@@ -106,4 +107,10 @@
 .cats-modal-body > div img {
   width: 20px;
   margin-left: 5px;
+}
+@media only screen and (max-width:800px){
+  .create-ad-step-two-full-form,
+    .create-ad-step-two-mini-form{
+    width: 96% !important;
+  }
 }

@@ -21,8 +21,8 @@ const MobileMenu=()=>{
                 <span>خانه</span>
             </div>
             <div 
-                onClick={()=>history.push("/cats")}
-                style={location.pathname==="/cats" ? {borderTop:"3px solid #353535",paddingBottom:3+"px"}:{}}
+                onClick={()=>history.push("/mobile/cats")}
+                style={location.pathname==="/mobile/cats" ? {borderTop:"3px solid #353535",paddingBottom:3+"px"}:{}}
             >
                 <img src={catImage} alt="home" />
                 <span>دسته بندی ها</span>

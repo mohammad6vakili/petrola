@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./Profile.css";
 import Header from "../../Menu/Header";
 import {useHistory} from "react-router-dom";
@@ -41,13 +41,13 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                <div>
+                {/* <div>
                     <div>
                         <img src={profileAd} alt="info" />
                         <span>آگهی های من</span>
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
-                </div>
+                </div> */}
                 <div onClick={()=>history.push("/draft")}>
                     <div>
                         <img src={profilePen} alt="info" />
@@ -79,14 +79,6 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                {/* <div>
-                    <div>
-                        <img src={profileShare} alt="info" />
-                        <span>معرفی پترولا به همکاران</span>
-                    </div>
-                    <img className="profile-arrow" src={arrowImage} alt="arrow" />
-                </div> */}
-
                 <div className="profile-space-div"></div>
 
                 <div onClick={logout}>

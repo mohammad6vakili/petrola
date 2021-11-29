@@ -1,13 +1,19 @@
 import {
     AD_DATA,
     PROFILE,
-    CATEGORY
-} from "./Action";
+    CATEGORY,
+    FILTER,
+    CHECK_FIL,
+    IS_FILTER
+  } from "./Action";
 
 const initialState = {
     adData:null,
     profile:null,
-    category:null
+    category:null,
+    filter:null,
+    checkFil:null,
+    isFilter:false
 };
 
 const Reducer = (state = initialState, action) => {
@@ -18,6 +24,12 @@ const Reducer = (state = initialState, action) => {
       return {...state , profile: action.payload};
     case CATEGORY:
       return {...state , category: action.payload};
+    case FILTER:
+      return {...state , filter: action.payload};
+    case CHECK_FIL:
+      return {...state , checkFil: action.payload};
+    case IS_FILTER:
+      return {...state , isFilter: action.payload};
     default:
       return state;
   }
