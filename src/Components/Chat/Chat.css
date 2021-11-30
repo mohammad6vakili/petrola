@@ -92,16 +92,37 @@
 .my{
   margin-bottom: 20px;
   padding:15px 40px 30px 40px;
-  background-color: rgb(116, 173, 219);
+  background-color: rgba(142, 179, 209, 0.767);
   border-radius: 10px 0 10px 10px;
 }
 .it{
   margin-bottom: 20px;
   padding:15px 40px 30px 40px;
   margin-right: auto;
-  background-color: rgb(182, 182, 182);
+  background-color: rgba(182, 182, 182, 0.63);
   border-radius: 0px 10px 10px 10px;
 }
-@media only screen and (max-width:1000px){
+@media only screen and (max-width:500px){
+  .chat-side{
+    width: 200px;
+  }
+  .chat-side-item{
+    flex-direction: column;
+    height: unset !important;
+  }
+  .chat-side-item>div{
+    width: 100%;
+    font-size: 10px !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .chat-side img{
+    margin-bottom: 5px;
+    width: 50px !important;
+  }
+  .chat-body{
+    padding:0 !important;
+    width: 100% !important;
+  }
 
 }

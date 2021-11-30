@@ -14,7 +14,7 @@ const PrivateRoute = (props) => {
           profile ? (
           <Component {...props} />
         ) : (
-          history.replace("/")
+          history.replace("/login")
         )
       }
     />
