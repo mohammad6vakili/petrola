@@ -45,7 +45,63 @@
   height: 100%;
   overflow-y: auto;
   scrollbar-width: none !important;
+  position: relative;
 }
 .chat-body::-webkit-scrollbar {
   display: none !important;
+}
+.chat-input-box{
+  width: 100%;
+  height: 10vh;
+  background-color: white;
+  border-top: 1px solid rgb(209, 209, 209);
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-input-box>input{
+  width: 100%;
+  height: 100%;
+}
+.chat-input-box>img{
+  position:absolute;
+  left: 15px;
+  cursor: pointer;
+  width: 25px;
+}
+.chat-box-select{
+  width: 100%;
+  height: 100%;
+  overflow-y:auto ;
+  padding:20px 20px 10vh 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.chat-box-select>div{
+  position: relative;
+}
+.chat-box-select>div>span{
+  position:absolute;
+  left: 5px;
+  bottom: 5px;
+}
+.my{
+  margin-bottom: 20px;
+  padding:15px 40px 30px 40px;
+  background-color: rgb(116, 173, 219);
+  border-radius: 10px 0 10px 10px;
+}
+.it{
+  margin-bottom: 20px;
+  padding:15px 40px 30px 40px;
+  margin-right: auto;
+  background-color: rgb(182, 182, 182);
+  border-radius: 0px 10px 10px 10px;
+}
+@media only screen and (max-width:1000px){
+
 }
