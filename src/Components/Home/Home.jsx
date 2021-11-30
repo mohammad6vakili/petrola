@@ -126,16 +126,20 @@ const Home=()=>{
                                     <span>{data.persianName}</span>
                                     <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
                                     <div className="home-ads-infos">
+                                        {data.isVip!=="" &&
                                         <div style={{backgroundColor:Colors.gold}}>
                                             {data.isVip==="0" && "عادی"}
                                             {data.isVip==="1" && "ویژه"}
                                             {data.isVip==="2" && "آماده تحویل"}
                                         </div>
+                                        }
+                                        {data.type!=="" &&
                                         <div style={{backgroundColor:Colors.gray}}>
                                             {data.type==="0" && "خرید"}
                                             {data.type==="1" && "فروش"}
                                             {data.type==="2" && "خدمات"}
                                         </div>
+                                        }
                                         <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
                                     </div>
                                 </div>

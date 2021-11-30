@@ -21,6 +21,8 @@ import Transactions from './Pages/Profile/Transactions';
 import Permissions from "./Pages/Profile/Permissions";
 import MobileCats from './Components/Mobile Cats/MobileCats';
 import PrivateRoute from "./Helper/PrivateRoute";
+import MyAds from './Pages/Profile/MyAds';
+import ViewCompany from './Pages/Ads/ViewCompany';
 
 
 const App=()=>{
@@ -40,6 +42,8 @@ const App=()=>{
         <Route path="/chat" component={Chat} />
         <Route path="/contact" component={ContactUs} />
         <Route path="/draft" component={Draft} />
+        <Route path="/myAds" component={MyAds} />
+        <Route path="/company/view" component={ViewCompany} />
         <Route path="/company/info" component={CompanyInfo} />
         <Route path="/company/submit" component={CompanySubmit} />
         <Route path="/company/news" component={CompanyNews} />

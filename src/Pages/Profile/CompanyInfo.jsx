@@ -55,10 +55,17 @@ const CompanyInfo=()=>{
             :
             <>
                 <div className="company-top-banner" data-target="tooltip" title="ویرایش">
+                    {info.img!=="https://app.petrola.ir/uploads/" ?
+                        <img className="company-info-banner-img" src={info.img} alt="company" />
+                        :
+                        <div style={{width:"100%",height:"100%",backgroundColor:"#353535",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                            بدون تصویر
+                        </div>
+                    }
                     <div onClick={()=>history.push("/company/submit")} className="company-top-edit-btn">
                         <img src={penDark} alt="edit" />
                     </div>
-                    <img src={info.img} alt="avatar"/>
+                    <img src={info.logo} alt="avatar"/>
                 </div>
                 <div className="company-info-body">
                     <div className="company-info-first">

@@ -4,6 +4,7 @@ export const CATEGORY="CATEGORY";
 export const FILTER="FILTER";
 export const CHECK_FIL="CHECK_FIL";
 export const IS_FILTER="IS_FILTER";
+export const COMPANY_INFO="COMPANY_INFO";
 
 
 export const setAdData=(data)=>{
@@ -50,6 +51,14 @@ export const setIsFilter=(data)=>{
     return(
         {
             type:IS_FILTER,
+            payload:data
+        }
+    )
+}
+export const setCompanyInfo=(data)=>{
+    return(
+        {
+            type:COMPANY_INFO,
             payload:data
         }
     )

@@ -41,13 +41,13 @@ const Profile=()=>{
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
                 </div>
-                {/* <div>
+                <div onClick={()=>history.push("/myAds")}>
                     <div>
                         <img src={profileAd} alt="info" />
                         <span>آگهی های من</span>
                     </div>
                     <img className="profile-arrow" src={arrowImage} alt="arrow" />
-                </div> */}
+                </div>
                 <div onClick={()=>history.push("/draft")}>
                     <div>
                         <img src={profilePen} alt="info" />

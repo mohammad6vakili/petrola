@@ -1,22 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import "./ViewAd.css";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Button , Modal} from 'antd';
+import {setCompanyInfo} from "../../Store/Action";
 import Colors from "../../Helper/Colors";
+import axios from 'axios';
+import Env from "../../Constant/Env.json";
 import Header from "../../Menu/Header";
 import noImage from "../../Assets/images/no_image.svg";
 import savedImage from "../../Assets/images/saved.svg";
 import notSavedImage from "../../Assets/images/notsaved.svg";
+import { toast } from 'react-toastify';
 
 
 const ViewAd=()=>{
     const history=useHistory();
+    const dispatch=useDispatch();
     const data=useSelector(state=>state.Reducer.adData);
+    const info=useSelector(state=>state.Reducer.companyInfo);
     const [modal , setModal]=useState(false);
 
-    
+    const getCompanyInfo=async()=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/GetCompanyInfo",{
+                username:data.username
+            });
+            dispatch(setCompanyInfo(response.data.data));
+            console.log(response.data);
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
+    }
+
+    const ContactWithCustomer=()=>{
+        if(info===null){
+            setModal(true);
+        }else{
+            history.push("/company/view");
+        }
+    }
+
     useEffect(()=>{
+        getCompanyInfo();
         console.log(data);
     },[])
 
@@ -83,7 +112,7 @@ const ViewAd=()=>{
             </div>
             <div className="view-ad-fourth">
                 <Button 
-                    onClick={()=>setModal(true)}
+                    onClick={ContactWithCustomer}
                     className="btn-dark" 
                     style={{width:"50%"}}
                 >ارتباط با فروشنده</Button>

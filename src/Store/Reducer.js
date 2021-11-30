@@ -4,7 +4,8 @@ import {
     CATEGORY,
     FILTER,
     CHECK_FIL,
-    IS_FILTER
+    IS_FILTER,
+    COMPANY_INFO
   } from "./Action";
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
     category:null,
     filter:null,
     checkFil:null,
-    isFilter:false
+    isFilter:false,
+    companyInfo:null
 };
 
 const Reducer = (state = initialState, action) => {
@@ -30,6 +32,8 @@ const Reducer = (state = initialState, action) => {
       return {...state , checkFil: action.payload};
     case IS_FILTER:
       return {...state , isFilter: action.payload};
+    case COMPANY_INFO:
+      return {...state , companyInfo: action.payload};
     default:
       return state;
   }
