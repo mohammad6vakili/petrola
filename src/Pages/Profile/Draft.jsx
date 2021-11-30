@@ -10,6 +10,8 @@ import Colors from '../../Helper/Colors';
 import { setAdData } from '../../Store/Action';
 import { useDispatch } from 'react-redux';
 import Env from "../../Constant/Env.json";
+import penImage from "../../Assets/images/pen-dark.svg";
+import trashImage from "../../Assets/images/trash.svg";
 import { toast } from 'react-toastify';
 
 
@@ -22,7 +24,7 @@ const Draft=()=>{
         const username = localStorage.getItem("username");
         try{
             const response=await axios.post(Env.baseUrl + "/GetAdsList",{
-                username:"09137000570",
+                username:username,
                 category:"-1",
                 type:"-1",
                 isVip:"-1",
@@ -42,13 +44,30 @@ const Draft=()=>{
         const username = localStorage.getItem("username");
         try{
             const response=await axios.post(Env.baseUrl + "/RegisterAds",{
-                username:"09137000570",
+                username:username,
             });
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
             history.push("/home");
             console.log(response.data);
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
+    }
+
+    const removeAds=async(data)=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/RemoveAds",{
+                id:data
+            });
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+            history.push("/home");
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -70,14 +89,14 @@ const Draft=()=>{
         <div className="draft">
             <Header/>
             <div className="company-news-head">
-                    <span>اخبار شرکت پترولا</span>
+                    <span>پیش نویس ها</span>
                     <Button onClick={()=>history.push("/ads/create")} className="company-submit-btn">+ افزودن آگهی</Button>
             </div>
             <div className="draft-body">
                 {draft.length>0 ?
                     draft.map((data)=>(
-                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
-                            <div>
+                        <div style={{backgroundColor:Colors.gray,height:"unset"}} className="home-ads">
+                            <div onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />
                                 :
@@ -85,21 +104,29 @@ const Draft=()=>{
                                 }
                             </div>
                             <div>
-                                <span>{data.persianName}</span>
-                                <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
-                                <div className="home-ads-infos">
-                                    <div style={{backgroundColor:Colors.gold}}>
+                                <span onClick={()=>goToSingle(data)}>{data.persianName}</span>
+                                <span onClick={()=>goToSingle(data)} style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
+                                <div onClick={()=>goToSingle(data)} className="home-ads-infos">
+                                    {data.isVip!=="" &&
+                                        <div style={{backgroundColor:Colors.gold,marginBottom:"5px"}}>
                                         {data.isVip==="0" && "عادی"}
                                         {data.isVip==="1" && "ویژه"}
                                         {data.isVip==="2" && "آماده تحویل"}
                                     </div>
-                                    <div style={{backgroundColor:Colors.gray}}>
+                                    }
+                                    {data.type!=="" &&
+                                    <div style={{backgroundColor:Colors.gray,marginBottom:"10px"}}>
                                         {data.type==="0" && "خرید"}
                                         {data.type==="1" && "فروش"}
                                         {data.type==="2" && "خدمات"}
                                     </div>
-                                    <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
+                                    }
                                 </div>
+                                <div style={{display:"flex",alignItems:"center",marginTop:"10px"}}>
+                                        <Button onClick={()=>removeAds(data.id)}  className="btn-gold draft-remove-btn">
+                                            <img style={{width:"20px"}} src={trashImage} alt="delete"/>
+                                        </Button>
+                                    </div>
                             </div>
                         </div>
                     ))

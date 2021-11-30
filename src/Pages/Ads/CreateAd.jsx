@@ -115,7 +115,7 @@ const CreateAd=()=>{
             postData.append("desc",desc);
             postData.append("img",fileList===null?"":fileList);
             try{
-                const response=await axios.post(Env.baseUrl + "/newAds",postData);
+                const response=await axios.post(Env.baseUrl + "/WebNewAds",postData);
                 if(response.data.msg==="خطایی رخ داده است "){
                     toast.error(response.data.msg,{
                         position: toast.POSITION.BOTTOM_LEFT

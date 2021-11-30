@@ -37,6 +37,24 @@ const Permissions=()=>{
         }
     }
 
+    const removeItem=async(data)=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/RemoveItem",{
+                id:data.id,
+                type:"permission"
+            });
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });         
+            getPermission();   
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
+    }
+
     const createPermission=async()=>{
         const username = localStorage.getItem("username");
         const postData = new FormData();
@@ -98,10 +116,10 @@ const Permissions=()=>{
                         <div style={{fontWeight:"700",fontSize:"17px"}}>{data.name}</div>
                         <div style={{width:"100%",display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"auto"}}>
                             <div style={{display:"flex"}}>
-                                <Button>
+                                {/* <Button>
                                     <img src={penImage} alt="edit"/>
-                                </Button>
-                                <Button>
+                                </Button> */}
+                                <Button onClick={()=>removeItem(data)}>
                                     <img src={trashImage} alt="delete"/>
                                 </Button>
                             </div>

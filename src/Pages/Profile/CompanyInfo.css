@@ -117,8 +117,8 @@
     flex-wrap: wrap;
   }
   .company-info-second>div{
-    width: 130px;
-    height: 100px;
+    width: 250px;
+    height: 150px;
     margin: 5px 10px;
   }
   .company-info-second > div img {
@@ -127,6 +127,9 @@
   .company-info-second > div span {
     margin-top: 15px;
     font-size: 14px;
+    width: 100%;
+    word-wrap: break-word;
+    text-align: center;
   }
 }
 @media only screen and (max-width: 800px) {

@@ -20,6 +20,7 @@ import MobileMenu from './Menu/MobileMenu';
 import Transactions from './Pages/Profile/Transactions';
 import Permissions from "./Pages/Profile/Permissions";
 import MobileCats from './Components/Mobile Cats/MobileCats';
+import PrivateRoute from "./Helper/PrivateRoute";
 
 
 const App=()=>{
@@ -46,7 +47,7 @@ const App=()=>{
         <Route path="/company/permissions" component={Permissions} />
         <Route path="/transactions" component={Transactions} />
         <Route path="/mobile/cats" component={MobileCats} />
-        <Route path="/profile" component={Profile} />
+        <PrivateRoute path="/profile" component={Profile} />
         {category!==null ? <Route path="/ads/create" component={CreateAd} />:<Redirect to="/home" />}
         {adData!==null ? <Route path="/ads/view" component={ViewAd} />:<Redirect to="/home" />}
       </Switch>

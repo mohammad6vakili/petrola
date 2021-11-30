@@ -38,6 +38,24 @@ const CompanyNews=()=>{
         }
     }
 
+    const removeItem=async(data)=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/RemoveItem",{
+                id:data.id,
+                type:"news"
+            });
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });         
+            getNews();   
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
+    }
+
     const createNews=async()=>{
         let d = new Date();
         const username = localStorage.getItem("username");
@@ -102,10 +120,10 @@ const CompanyNews=()=>{
                         <div>{data.desc}</div>
                         <div style={{width:"100%",display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"auto"}}>
                             <div style={{display:"flex"}}>
-                                <Button>
+                                {/* <Button>
                                     <img src={penImage} alt="edit"/>
-                                </Button>
-                                <Button>
+                                </Button> */}
+                                <Button onClick={()=>removeItem(data)}>
                                     <img src={trashImage} alt="delete"/>
                                 </Button>
                             </div>
