@@ -22,12 +22,13 @@
 }
 .header-search > div {
   width: 100% !important;
-  border-radius: 7px !important;
+  border-radius: 4px !important;
   border: 1px solid #3535353d;
-  height: 40px !important;
-  box-shadow: 3px 1px 10px rgba(53, 53, 53, 0.25) !important;
+  height: 45px !important;
+  background-color: rgba(0,0,0,.04) !important;
 }
 .header-search > div input,.header-search > div div{
+  background-color: rgba(0,0,0,.0) !important;
   border-radius: 7px !important;
   border: none !important;
 }

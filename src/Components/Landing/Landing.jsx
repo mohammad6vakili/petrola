@@ -104,7 +104,7 @@ const Landing=()=>{
                             کنیم که پاسخگوی نیاز این صنعت و صنایع وابسته به آن باشد.
                             بر همین اساس پترولا طراحی آماده بهره برداری شد.
                         </span>
-                        <Button className="btn-dark">دانلود اپلیکیشن</Button>
+                        <Button onClick={()=>history.push("/home")} className="btn-dark">مشاهده آگهی ها</Button>
                     </div>
                 </div>
             </div>

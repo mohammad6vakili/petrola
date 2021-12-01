@@ -51,6 +51,7 @@ const MyAds=()=>{
     return(
         <div className="my-ads">
             <Header/>
+            <div className="home-ads-wrapper">
             {ads!==null ?
                     ads.map((data)=>(
                         <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
@@ -88,6 +89,7 @@ const MyAds=()=>{
                         هیچ آگهی برای پرداخت وجود ندارد
                     </Button>
                 }
+                </div>
         </div>
     )
 }

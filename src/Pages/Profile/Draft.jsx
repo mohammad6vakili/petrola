@@ -92,11 +92,11 @@ const Draft=()=>{
                     <span>پیش نویس ها</span>
                     <Button onClick={()=>history.push("/ads/create")} className="company-submit-btn">+ افزودن آگهی</Button>
             </div>
-            <div className="draft-body">
+            <div className="home-ads-wrapper">
                 {draft.length>0 ?
                     draft.map((data)=>(
                         <div style={{backgroundColor:Colors.gray,height:"unset"}} className="home-ads">
-                            <div onClick={()=>goToSingle(data)}>
+                            <div style={{height:"50%"}} onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />
                                 :

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import "./Header.css";
 import logo from "../Assets/images/logo.png";
 import homeImage from "../Assets/images/home.svg";
+import { useDispatch } from 'react-redux';
 import vipImage from "../Assets/images/vip.svg";
 import chatImage from "../Assets/images/chat.svg";
 import userImage from "../Assets/images/user.svg";
 import { Input , Button , AutoComplete } from 'antd';
+import {setFilter} from "../Store/Action";
 import { useHistory } from 'react-router';
 import Env from "../Constant/Env.json";
 import { toast } from 'react-toastify';
@@ -13,16 +15,23 @@ import axios from 'axios';
 
 
 const Header=()=>{
-
+    const dispatch=useDispatch();
     const history = useHistory();
     const [options, setOptions] = useState([]);
     const [searched , setSearched]=useState([]);
 
     
+    const selectSearch=(val)=>{
+        dispatch(setFilter(val));
+        setOptions([]);
+        setSearched([]);
+    }
+
     const handleSearch = async(value) => {
         setSearched(options);
         setOptions([]);
         setOptions(searched);
+        console.log();
         try{
             const response=await axios.post(Env.baseUrl + "/Search",{
                 keyword:value
@@ -57,6 +66,7 @@ const Header=()=>{
                 <AutoComplete
                     dropdownClassName="autocomplete-dropdown"
                     className="autocomplete"
+                    onSelect={(val)=>selectSearch(val)}
                     options={searched}
                     style={{
                         width: 200,
