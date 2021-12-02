@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 import Env from "../../Constant/Env.json";
 import noImage from "../../Assets/images/no_image.svg";
 import savedImage from "../../Assets/images/saved.svg";
+import unSavedImage from "../../Assets/images/unsaved.svg";
 import notSavedImage from "../../Assets/images/notsaved.svg";
 
 
@@ -33,6 +34,25 @@ const Home=()=>{
             const response=await axios.post(Env.baseUrl + "/GetHomeData",{});
             setNewAds(response.data.data.newAds);
             dispatch(setCategory(response.data.data.categories));
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
+    }
+
+    const saveAdHandler=async(data)=>{
+        const username=localStorage.getItem("username");
+        try{
+            const response=await axios.post(Env.baseUrl + "/SetFav",{
+                username:username,
+                adsId:data.id.toString()
+            });
+            toast.success(response.data.msg,{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+            getHomeData();            
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -147,8 +167,8 @@ const Home=()=>{
                         ))
                     :
                     newAds.map((data)=>(
-                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
-                            <div>
+                        <div style={{backgroundColor:Colors.gray}} className="home-ads">
+                            <div  onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />
                                 :
@@ -156,20 +176,21 @@ const Home=()=>{
                                 }
                             </div>
                             <div>
-                                <span>{data.persianName}</span>
-                                <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
+                                <span  onClick={()=>goToSingle(data)}>{data.persianName}</span>
+                                <span  onClick={()=>goToSingle(data)} style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
                                 <div className="home-ads-infos">
-                                    <div style={{backgroundColor:Colors.gold}}>
+                                    <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gold}}>
                                         {data.isVip==="0" && "عادی"}
                                         {data.isVip==="1" && "ویژه"}
                                         {data.isVip==="2" && "آماده تحویل"}
                                     </div>
-                                    <div style={{backgroundColor:Colors.gray}}>
+                                    <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}}>
                                         {data.type==="0" && "خرید"}
                                         {data.type==="1" && "فروش"}
                                         {data.type==="2" && "خدمات"}
                                     </div>
-                                    <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
+                                    {data.isFav==="0" && <img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={notSavedImage} alt="save"/>}
+                                    {data.isFav==="1" &&<img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={savedImage} alt="save" />}
                                 </div>
                             </div>
                         </div>
