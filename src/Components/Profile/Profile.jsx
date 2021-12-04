@@ -58,7 +58,7 @@ const Profile=()=>{
 
                 <div className="profile-space-div"></div>
 
-                <div>
+                <div onClick={()=>history.push("/favlist")}>
                     <div>
                         <img src={profileSave} alt="info" />
                         <span>ذخیره شده ها</span>

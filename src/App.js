@@ -23,6 +23,7 @@ import MobileCats from './Components/Mobile Cats/MobileCats';
 import PrivateRoute from "./Helper/PrivateRoute";
 import MyAds from './Pages/Profile/MyAds';
 import ViewCompany from './Pages/Ads/ViewCompany';
+import FavList from './Pages/Profile/FavList';
 
 
 const App=()=>{
@@ -43,6 +44,7 @@ const App=()=>{
         <Route path="/contact" component={ContactUs} />
         <Route path="/draft" component={Draft} />
         <Route path="/myAds" component={MyAds} />
+        <Route path="/favlist" component={FavList} />
         <Route path="/company/view" component={ViewCompany} />
         <Route path="/company/info" component={CompanyInfo} />
         <Route path="/company/submit" component={CompanySubmit} />

@@ -1,56 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import "./Draft.css";
-import Header from '../../Menu/Header';
-import {Button} from "antd";
-import { useHistory } from 'react-router';
+import "./FavList.css";
+import Header from "../../Menu/Header";
 import axios from 'axios';
+import Env from "../../Constant/Env.json";
+import { toast } from 'react-toastify';
+import Colors from '../../Helper/Colors';
+import { useDispatch } from 'react-redux';
+import { setAdData } from '../../Store/Action';
 import notSavedImage from "../../Assets/images/notsaved.svg";
 import noImage from "../../Assets/images/no_image.svg";
-import Colors from '../../Helper/Colors';
-import { setAdData } from '../../Store/Action';
-import { useDispatch } from 'react-redux';
-import Env from "../../Constant/Env.json";
-import penImage from "../../Assets/images/pen-dark.svg";
 import trashImage from "../../Assets/images/trash.svg";
-import { toast } from 'react-toastify';
+import { Button } from 'antd';
+import { useHistory } from 'react-router';
 
 
-const Draft=()=>{
+const FavList=()=>{
     const dispatch=useDispatch();
     const history=useHistory();
-    const [draft , setDraft]=useState([]);
+    const [fav , setFav]=useState([]);
 
-    const getDraft=async()=>{
-        const username = localStorage.getItem("username");
-        try{
-            const response=await axios.post(Env.baseUrl + "/GetAdsList",{
-                username:username,
-                category:"-1",
-                type:"-1",
-                isVip:"-1",
-                status:"0"
-            });
-            setDraft(response.data.data);
-            console.log(response.data);
-        }catch(err){
-            console.log(err);
-            toast.error("خطا در برقراری ارتباط",{
-                position: toast.POSITION.BOTTOM_LEFT
-            });
-        }
+    const goToSingle=(data)=>{
+        dispatch(setAdData(data));
+        history.push("/ads/view");
     }
 
-    const registerAds=async()=>{
+    const getFavList=async()=>{
         const username = localStorage.getItem("username");
         try{
-            const response=await axios.post(Env.baseUrl + "/RegisterAds",{
+            const response=await axios.post(Env.baseUrl + "/getFavList",{
                 username:username,
             });
-            toast.success(response.data.msg,{
-                position: toast.POSITION.BOTTOM_LEFT
-            });
-            history.push("/home");
-            console.log(response.data);
+            setFav(response.data.data);
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -60,14 +40,16 @@ const Draft=()=>{
     }
 
     const removeAds=async(data)=>{
+        const username=localStorage.getItem("username");
         try{
-            const response=await axios.post(Env.baseUrl + "/RemoveAds",{
-                id:data
+            const response=await axios.post(Env.baseUrl + "/SetFav",{
+                username:username,
+                adsId:data
             });
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
-            history.push("/home");
+            getFavList();
         }catch(err){
             console.log(err);
             toast.error("خطا در برقراری ارتباط",{
@@ -76,25 +58,16 @@ const Draft=()=>{
         }
     }
 
-    const goToSingle=(data)=>{
-        dispatch(setAdData(data));
-        history.push("/ads/view");
-    }
-
     useEffect(()=>{
-        getDraft();
+        getFavList();
     },[])
 
     return(
-        <div className="draft">
+        <div className="favlist">
             <Header/>
-            <div className="company-news-head">
-                    <span>پیش نویس ها</span>
-                    <Button onClick={()=>history.push("/ads/create")} className="company-submit-btn">+ افزودن آگهی</Button>
-            </div>
             <div className="home-ads-wrapper">
-                {draft.length>0 ?
-                    draft.map((data)=>(
+                {fav.length>0 ?
+                    fav.map((data)=>(
                         <div style={{backgroundColor:Colors.gray,height:"unset"}} className="home-ads">
                             <div style={{height:"50%"}} onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
@@ -133,13 +106,12 @@ const Draft=()=>{
                 :
                 <div style={{width:"100%",height:"50vh",display:"flex",justifyContent:"center",alignItems:"center"}}>
                     <Button className="btn-dark">
-                        هیچ آگهی برای پرداخت وجود ندارد
+                        هیچ آگهی ذخیره شده ای ندارید    
                     </Button>
                 </div>
                 }
             </div>
-            {draft.length>0 && <Button onClick={registerAds} className="btn-dark" style={{width:"300px"}}>ثبت آگهی ها</Button>}
         </div>
     )
 }
-export default Draft;
+export default FavList;

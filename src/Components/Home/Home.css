@@ -21,7 +21,7 @@
   cursor: pointer;
   width: 30%;
   min-width: 350px !important;
-  height: 280px !important;
+  height: 320px !important;
   margin: 20px 15px;
   padding: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
@@ -40,6 +40,7 @@
 }
 .home-ads > div:nth-child(1) {
   height: 60% !important;
+  padding-bottom: 10px;
 }
 .home-ads > div:nth-child(1) > img {
   width: 45% !important;
