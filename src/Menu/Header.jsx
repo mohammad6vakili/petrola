@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Header.css";
-import logo from "../Assets/images/logo.png";
+import logo from "../Assets/images/mask-logo.png";
 import homeImage from "../Assets/images/home.svg";
 import { useDispatch } from 'react-redux';
 import vipImage from "../Assets/images/vip.svg";

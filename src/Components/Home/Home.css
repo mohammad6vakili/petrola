@@ -1,6 +1,7 @@
 .home {
   width: 100%;
   min-height: 100vh;
+  padding-top: 11vh;
   direction: ltr;
 }
 .home-body {
@@ -19,9 +20,9 @@
 }
 .home-ads {
   cursor: pointer;
-  width: 30%;
-  min-width: 350px !important;
-  height: 320px !important;
+  width: 22%;
+  min-width: 250px !important;
+  height: 250px !important;
   margin: 20px 15px;
   padding: 10px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
@@ -39,17 +40,19 @@
   justify-content: center;
 }
 .home-ads > div:nth-child(1) {
-  height: 60% !important;
+  height: 60% ;
   padding-bottom: 10px;
 }
 .home-ads > div:nth-child(1) > img {
-  width: 45% !important;
+  width: 60% !important;
   height: 90% !important;
   border: 1px solid rgb(219, 219, 219);
   border-radius: 5px;
 }
 .home-ads > div span {
   font-weight: 700;
+  text-align: center;
+  font-size: 13px;
 }
 .home-ads-infos {
   width: 100%;
@@ -57,6 +60,8 @@
   justify-content: center;
   align-items: center;
   direction: ltr;
+  font-weight: 700;
+  font-size: 11px !important;
   margin-top: 3px;
 }
 .home-ads-infos > img {
@@ -81,8 +86,58 @@
   }
 }
 @media only screen and (max-width: 740px) {
+  .home-ads-wrapper {
+    justify-content: space-between;
+  }
   .home-ads {
-    width: 90%;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 45%;
     min-width: 300;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .home-ads {
+    width: 200px !important;
+    min-width: 200px !important;
+    height: 200px !important;
+  }
+  .home-ads > div span {
+    font-size: 11px;
+  }
+  .home-ads-infos {
+    font-size: 9px !important;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .home-ads-wrapper {
+    justify-content: center;
+  }
+  .home-ads {
+    flex-direction: row;
+    width: 90% !important;
+    min-width: 310px !important;
+    height: 150px !important;
+    margin:7px 0;
+  }
+  .home-ads > div {
+    width: 50% !important;
+    height: 100% !important;
+    padding-bottom: 10px;
+  }
+  .home-ads > div:nth-child(1) > img {
+    width: 90% !important;
+    height: 90% !important;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 5px;
+  }
+  .home-ads > div span {
+    font-size: 11px;
+  }
+  .home-ads-infos {
+    font-size: 9px !important;
+  }
+  .home-ads-infos >div{
+    margin:0 2px !important;
   }
 }
