@@ -5,6 +5,7 @@ export const FILTER="FILTER";
 export const CHECK_FIL="CHECK_FIL";
 export const IS_FILTER="IS_FILTER";
 export const COMPANY_INFO="COMPANY_INFO";
+export const SELECT_FOR_CHAT="SELECT_FOR_CHAT";
 
 
 export const setAdData=(data)=>{
@@ -59,6 +60,14 @@ export const setCompanyInfo=(data)=>{
     return(
         {
             type:COMPANY_INFO,
+            payload:data
+        }
+    )
+}
+export const setSelectForChat=(data)=>{
+    return(
+        {
+            type:SELECT_FOR_CHAT,
             payload:data
         }
     )

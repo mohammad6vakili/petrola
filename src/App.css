@@ -18,6 +18,22 @@
   justify-content: flex-start;
   overflow: hidden;
 }
+.ant-radio-wrapper{
+  display: flex;
+  margin-bottom: 10px !important;
+  align-items: center !important;
+}
+.ant-radio-inner{
+  width: 30px !important;
+  height: 30px !important;
+}
+.ant-radio-inner::after {
+  width: 20px !important;
+  height: 20px !important;
+  left: 4px !important;
+  top: 4px !important;
+  border-radius: 50% !important;
+}
 .btn-dark{
   background-color: #353535 !important;
   color: #FFC412 !important;

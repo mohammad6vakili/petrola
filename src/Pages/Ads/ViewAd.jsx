@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "./ViewAd.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { Button , Modal} from 'antd';
-import {setCompanyInfo} from "../../Store/Action";
+import { Button , message, Modal} from 'antd';
+import {setCompanyInfo, setSelectForChat} from "../../Store/Action";
 import Colors from "../../Helper/Colors";
 import axios from 'axios';
 import Env from "../../Constant/Env.json";
@@ -42,6 +42,14 @@ const ViewAd=()=>{
         }else{
             history.push("/company/view");
         }
+    }
+
+    const ChatWithCustomer=()=>{
+        toast.info(`شما در حال پیام به ${data.username} می باشید.`,{
+            position:"bottom-left"
+        })
+        dispatch(setSelectForChat(data));
+        history.push("/chat");
     }
 
     useEffect(()=>{
@@ -83,6 +91,22 @@ const ViewAd=()=>{
                         </div>
                         <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
                     </div>
+                    <div className="view-ad-fourth">
+                        <Button 
+                            onClick={ContactWithCustomer}
+                            className="btn-dark" 
+                            style={{width:"40%"}}
+                        >
+                            ارتباط با فروشنده
+                        </Button>
+                        <Button 
+                            onClick={ChatWithCustomer}
+                            className="btn-dark" 
+                            style={{width:"40%"}}
+                        >
+                            چت آنلاین با فروشنده
+                        </Button>
+                    </div>
                 </div>
             </div>
             <div className="column-seperator">
@@ -109,13 +133,6 @@ const ViewAd=()=>{
             </div>
             <div className="view-ad-third">
                 {data.desc!=="" ? data.desc : "---"}
-            </div>
-            <div className="view-ad-fourth">
-                <Button 
-                    onClick={ContactWithCustomer}
-                    className="btn-dark" 
-                    style={{width:"50%"}}
-                >ارتباط با فروشنده</Button>
             </div>
             <Modal 
                 title="تماس مستقیم با آگهی دهنده"

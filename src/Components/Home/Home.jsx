@@ -98,12 +98,12 @@ const Home=()=>{
                 }
             })
         }
-        setFilAds(array);
         if(array.length>0){
-            dispatch(setIsFilter(true));
-        }else if(array.length===0){
-            dispatch(setIsFilter(false));
+            setFilAds(array);            
+        }else{
+            setFilAds([]);
         }
+        dispatch(setIsFilter(true));
     },[filter]);
 
     useEffect(async()=>{
@@ -133,9 +133,49 @@ const Home=()=>{
                 <Sidebar/>
                 <div className="home-body">
                     <div className="home-ads-wrapper">
-                        {isFilter===true ? filAds.map((data)=>(
-                            <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
-                                <div>
+                        {isFilter===true && filAds.length>0 &&
+                            filAds.map((data)=>(
+                                <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
+                                    <div>
+                                        {data.img !=="https://app.petrola.ir/uploads/" ?
+                                            <img src={data.img} alt="ads" />
+                                        :
+                                            <img src={noImage} alt="no image" />
+                                        }
+                                    </div>
+                                    <div>
+                                        <span>{data.persianName}</span>
+                                        <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
+                                        <div className="home-ads-infos">
+                                            {data.isVip!=="" &&
+                                            <div style={{backgroundColor:Colors.gold}}>
+                                                {data.isVip==="0" && "عادی"}
+                                                {data.isVip==="1" && "ویژه"}
+                                                {data.isVip==="2" && "آماده تحویل"}
+                                            </div>
+                                            }
+                                            {data.type!=="" &&
+                                            <div style={{backgroundColor:Colors.gray}}>
+                                                {data.type==="0" && "خرید"}
+                                                {data.type==="1" && "فروش"}
+                                                {data.type==="2" && "خدمات"}
+                                            </div>
+                                            }
+                                            <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        
+                        {isFilter===true && filAds.length<1 && 
+                            <div style={{width:"100%",height:"100%",textAlign:"center",marginTop:"20vh",fontSize:"20px"}}>هیج آگهی ای در این دسته ثبت نشده است</div>
+                        }
+                        
+                        {isFilter===false && 
+                        newAds.map((data)=>(
+                            <div style={{backgroundColor:Colors.gray}} className="home-ads">
+                                <div  onClick={()=>goToSingle(data)}>
                                     {data.img !=="https://app.petrola.ir/uploads/" ?
                                         <img src={data.img} alt="ads" />
                                     :
@@ -143,58 +183,25 @@ const Home=()=>{
                                     }
                                 </div>
                                 <div>
-                                    <span>{data.persianName}</span>
-                                    <span style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
+                                    <span  onClick={()=>goToSingle(data)}>{data.persianName}</span>
+                                    <span  onClick={()=>goToSingle(data)} style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
                                     <div className="home-ads-infos">
-                                        {data.isVip!=="" &&
-                                        <div style={{backgroundColor:Colors.gold}}>
+                                        <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gold}}>
                                             {data.isVip==="0" && "عادی"}
                                             {data.isVip==="1" && "ویژه"}
                                             {data.isVip==="2" && "آماده تحویل"}
                                         </div>
-                                        }
-                                        {data.type!=="" &&
-                                        <div style={{backgroundColor:Colors.gray}}>
+                                        <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}}>
                                             {data.type==="0" && "خرید"}
                                             {data.type==="1" && "فروش"}
                                             {data.type==="2" && "خدمات"}
                                         </div>
-                                        }
-                                        <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
+                                        {data.isFav==="0" && <img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={notSavedImage} alt="save"/>}
+                                        {data.isFav==="1" &&<img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={savedImage} alt="save" />}
                                     </div>
                                 </div>
                             </div>
                         ))
-                    :
-                    newAds.map((data)=>(
-                        <div style={{backgroundColor:Colors.gray}} className="home-ads">
-                            <div  onClick={()=>goToSingle(data)}>
-                                {data.img !=="https://app.petrola.ir/uploads/" ?
-                                    <img src={data.img} alt="ads" />
-                                :
-                                    <img src={noImage} alt="no image" />
-                                }
-                            </div>
-                            <div>
-                                <span  onClick={()=>goToSingle(data)}>{data.persianName}</span>
-                                <span  onClick={()=>goToSingle(data)} style={{margin:"2px 0 7px 0"}}>{data.englishName}</span>
-                                <div className="home-ads-infos">
-                                    <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gold}}>
-                                        {data.isVip==="0" && "عادی"}
-                                        {data.isVip==="1" && "ویژه"}
-                                        {data.isVip==="2" && "آماده تحویل"}
-                                    </div>
-                                    <div  onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}}>
-                                        {data.type==="0" && "خرید"}
-                                        {data.type==="1" && "فروش"}
-                                        {data.type==="2" && "خدمات"}
-                                    </div>
-                                    {data.isFav==="0" && <img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={notSavedImage} alt="save"/>}
-                                    {data.isFav==="1" &&<img onClick={()=>saveAdHandler(data)} style={{width:"20px",cursor:"pointer",float:"left"}} src={savedImage} alt="save" />}
-                                </div>
-                            </div>
-                        </div>
-                    ))
                     }
                     </div>
             </div>

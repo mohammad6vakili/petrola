@@ -68,6 +68,7 @@ const Header=()=>{
                     className="autocomplete"
                     onSelect={(val)=>selectSearch(val)}
                     options={searched}
+                    onFocus={()=>history.push("/home")}
                     style={{
                         width: 200,
                     }}

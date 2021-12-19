@@ -76,6 +76,13 @@ const Landing=()=>{
         getHomeData();
     },[])
 
+    const landingLogin=()=>{
+        if(localStorage.getItem("username")){
+            history.push("/home");
+        }else{
+            history.push("/login");
+        }
+    }
 
     return(
         <div className="landing">
@@ -89,7 +96,7 @@ const Landing=()=>{
                         <span onClick={()=>history.push("/vip")}>ویژه</span>
                         <span onClick={()=>history.push("/contact")}>تماس با ما</span>
                     </div>
-                    <Button onClick={()=>history.push("/login")} className="btn-gold">ورود به پترولا</Button>
+                    <Button onClick={landingLogin} className="btn-gold">ورود به پترولا</Button>
                 </div>
                 <div className="landing-header-body">
                     <div>

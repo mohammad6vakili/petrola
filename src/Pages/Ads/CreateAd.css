@@ -25,6 +25,9 @@
 .create-ad-step-one > button {
   margin-top: 25px;
 }
+.create-ad-step-one>button,.create-ad-step-one>div>button,.create-ad-step-two>div>button{
+  height: 50px !important;
+}
 .create-ad-step-two {
   width: 100%;
   width: 100%;
@@ -88,7 +91,8 @@
   flex-wrap: wrap;
   overflow: auto;
 }
-.cats-modal-body > div , .create-ad-selected-cat{
+.cats-modal-body > div,
+.create-ad-selected-cat {
   width: 140px;
   height: 50px;
   cursor: pointer;
@@ -100,17 +104,40 @@
   border-radius: 30px;
   font-size: 10px;
 }
-.cats-modal-body > div:hover{
-  border: 1px solid #FFC412 !important;
-  transition-duration: .3s;
+.cats-modal-body > div:hover {
+  border: 1px solid #ffc412 !important;
+  transition-duration: 0.3s;
 }
 .cats-modal-body > div img {
   width: 20px;
   margin-left: 5px;
 }
-@media only screen and (max-width:800px){
+.show-filelist {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.show-filelist > div > img {
+  width: 100px !important;
+  height: 100px !important;
+  margin: 10px;
+}
+.create-ad-upload-wrapper {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+.create-ad-upload-wrapper > div {
+  margin: 10px 0;
+}
+@media only screen and (max-width: 800px) {
   .create-ad-step-two-full-form,
-    .create-ad-step-two-mini-form{
+  .create-ad-step-two-mini-form {
     width: 96% !important;
   }
 }

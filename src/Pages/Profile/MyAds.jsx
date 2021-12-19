@@ -85,9 +85,11 @@ const MyAds=()=>{
                         </div>
                     ))
                 :
+                <div style={{width:"100%",display:"flex",justifyContent:"center",alignItems:"center",marginTop:"20vh"}}>
                     <Button className="btn-dark">
                         هیچ آگهی برای پرداخت وجود ندارد
                     </Button>
+                </div>
                 }
                 </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import {Switch , Route , useLocation , Redirect} from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -32,6 +32,16 @@ const App=()=>{
   const adData=useSelector(state=>state.Reducer.adData);
   const category=useSelector(state=>state.Reducer.category);
   const profile=useSelector(state=>state.Reducer.profile);
+
+  useEffect(() => {
+    window.onbeforeunload = function() {
+        return true;
+    };
+    
+    return () => {
+        window.onbeforeunload = null;
+    };
+}, []);
 
   return (
     <div className="App">

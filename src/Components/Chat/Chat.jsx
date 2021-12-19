@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Chat.css";
-import { Input } from 'antd';
+import { useSelector } from 'react-redux';
+import {Input} from 'antd';
 import Header from "../../Menu/Header";
 import avatarImage from "../../Assets/images/avatar.png";
 import sendImage from "../../Assets/images/send.svg";
@@ -11,10 +12,11 @@ import { toast } from 'react-toastify';
 
 
 const Chat=()=>{
-
     const [chats , setChats]=useState(null);
     const [select , setSelect]=useState(null);
     const [text , setText]=useState("");
+    const adData=useSelector(state=>state.Reducer.selectForChat);
+
 
     const getChatHistory=async()=>{
         const username = localStorage.getItem("username");
@@ -37,7 +39,7 @@ const Chat=()=>{
         try{
             const response=await axios.post(Env.baseUrl + "/SendMessage",{
                 username:username,
-                adsId:select.id,
+                adsId:!adData ? select.id : adData.id,
                 message:text
             });
             getChatHistory();
@@ -74,9 +76,22 @@ const Chat=()=>{
                         </div>
                     ))}
                 </div>
-                <div className="chat-body">
-                    {select===null ? <div style={{width:"100%",height:"100%",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"20px"}}>یک گفتگو را انتخاب کنید</div>
-                    :
+                {adData!==null &&
+                    <div className="chat-body">
+                            <div className="chat-input-box">
+                                <Input 
+                                    value={text} 
+                                    onChange={(e)=>setText(e.target.value)} 
+                                    onPressEnter={sendMessage} 
+                                    placeholder="پیام خود را بنویسید..."
+                                />
+                                <img onClick={sendMessage} src={sendImage} alt="send" />
+                            </div>
+                        </div>
+                }
+
+                {select!==null &&                            
+                    <div className="chat-body">
                         <div className="chat-box-select">
                             {select.messages.map((data)=>(
                                 <div className={data.type==="0" ? "my" : "it"}>
@@ -85,17 +100,17 @@ const Chat=()=>{
                                 </div>
                             ))}
                         </div>
-                    }
-                    <div className="chat-input-box">
-                        <Input 
-                            value={text} 
-                            onChange={(e)=>setText(e.target.value)} 
-                            onPressEnter={sendMessage} 
-                            placeholder="پیام خود را بنویسید..."
-                        />
-                        <img onClick={sendMessage} src={sendImage} alt="send" />
+                        <div className="chat-input-box">
+                            <Input 
+                                value={text} 
+                                onChange={(e)=>setText(e.target.value)} 
+                                onPressEnter={sendMessage} 
+                                placeholder="پیام خود را بنویسید..."
+                            />
+                            <img onClick={sendMessage} src={sendImage} alt="send" />
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     )

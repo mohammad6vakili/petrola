@@ -7,6 +7,7 @@
   align-items: center;
   padding: 0 20px;
   position: sticky;
+  left: 0;
   top: 0;
   background-color: white;
   z-index: 11111;

@@ -21,14 +21,14 @@ const CreateAd=()=>{
     const [catStep , setCatStep]=useState(0);
     const [catModal , setCatModal]=useState(false);
     const [uploadRef , setUploadRef]=useState(null);
-    const [imageList , setImageList]=useState(null);
+    const [imageList , setImageList]=useState([]);
     const [isImageList , setIsImageList]=useState(false);
 
 
     const [selectParent , setSelectParent]=useState(null);
     const [type , setType]=useState(null);
     const [vip , setVip]=useState(1);
-    const [fileList , setFileList]=useState(null);
+    const [fileList , setFileList]=useState([]);
     const [persianName , setPersianName]=useState("");
     const [englishName , setEnglishName]=useState("");
     const [count , setCount]=useState("");
@@ -77,16 +77,25 @@ const CreateAd=()=>{
             list.push(e.target.files[i]);
         }
         list.map((li)=>{
-            setImageList(URL.createObjectURL(li))
+            imageList.push(URL.createObjectURL(li))
         })
-        setFileList(list[0]);
+        fileList.push(list);
         setIsImageList(true);
     };
 
+
     const newAdReq=async()=>{
         let d = new Date();
+        let array=[];
         const username=localStorage.getItem("username");
         const postData=new FormData();
+        if(fileList.length===0){
+            postData.append("img" , "");
+        }
+        fileList.map((file)=>{file.map((data)=>array.push(data))});
+        for (var i=0;i<array.length; i++){
+            postData.append('img',array[i]);
+          }
         if(persianName===""){
             toast.warning("لطفا نام فارسی را وارد کنید",{
                 position: toast.POSITION.BOTTOM_LEFT
@@ -113,7 +122,6 @@ const CreateAd=()=>{
             postData.append("price",price);
             postData.append("status","0");
             postData.append("desc",desc);
-            postData.append("img",fileList===null?"":fileList);
             try{
                 const response=await axios.post(Env.baseUrl + "/WebNewAds",postData);
                 if(response.data.msg==="خطایی رخ داده است "){
@@ -121,7 +129,7 @@ const CreateAd=()=>{
                         position: toast.POSITION.BOTTOM_LEFT
                     });
                 }else{
-                    history.push("/draft");
+                    history.push("/myAds");
                 }
             }catch(err){
                 console.log(err);
@@ -140,7 +148,7 @@ const CreateAd=()=>{
     return(
         <div className="create-ad">
             <Header/>
-            {step===0 &&
+            {step===0 &&    
                 <div className="create-ad-step-one">
                     <span>نوع آگهی خود را انتخاب کنید</span>
                     <Radio.Group value={type} style={{display:"flex",flexDirection:"column",marginBottom:"10px"}} onChange={(e)=>setType(e.target.value)}>
@@ -158,8 +166,9 @@ const CreateAd=()=>{
                         </Radio.Group>
                     </>
                     }
+                    <span>لطفا دسته بندی آگهی خود را انتخاب کنید</span>
                     <Button onClick={()=>setCatModal(true)} className="btn-gold">انتخاب دسته بندی</Button>
-                    <div style={{width:"100%",display:"flex",justifyContent:"center",position:"absolute",bottom:"20px",left:"0"}}>
+                    <div style={{width:"100%",display:"flex",justifyContent:"center",position:"absolute",bottom:"30px",left:"0"}}>
                         <Button onClick={goStepTwo} className="btn-dark" style={{width:"50%"}}>مرحله بعد</Button>
                     </div>
                     {category.map((data)=>{
@@ -211,25 +220,6 @@ const CreateAd=()=>{
                 <div className="create-ad-step-two">
                     <img style={{cursor:"pointer",margin:"0 0 10px 0",width:"15px"}} onClick={()=>setStep(0)} src={backImage} alt="back" />
                     <div className="create-ad-step-two-head">
-                        <div>تصویر آگهی</div>
-                        <div>برای آگهی خود یک تصویر مناسب انتخاب کنید.آگهی های دارای تصویر بیشتر مورد توجه کاربران قرار میگیرند.</div>
-                        <div style={{flexDirection:"column",alignItems:"center",marginTop:"50px"}}>
-                            {imageList!==null ?
-                                <img src={imageList} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
-                            :
-                                <img src={uploadImage} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
-                            }
-                            <input 
-                                onChange={upload}
-                                type="file" 
-                                name="filefield" 
-                                style={{display:"none"}}
-                                ref={(fileInput)=>setUploadRef(fileInput)}    
-                            />
-                            <Button className="btn-dark" style={{marginTop:"10px"}} onClick={()=>uploadRef.click()}>
-                                آپلود تصویر
-                            </Button>
-                        </div>
                         <div className="create-ad-step-two-seperate">
                             <div></div>
                             <span style={{width:"300px",textAlign:"center"}}>معرفی محصول</span>
@@ -340,6 +330,36 @@ const CreateAd=()=>{
                             <div className="create-ad-step-two-mini-form">
                                 <span>قیمت</span>
                                 <Input value={price} onChange={(e)=>setPrice(e.target.value)} style={{width:"40%"}}/>
+                            </div>
+                            <div className=""></div>
+                            <div className="create-ad-step-two-seperate"  style={{width:"100%"}}>
+                                <div></div>
+                                <span style={{width:"300px",textAlign:"center"}}>تصویر آگهی</span>
+                                <div></div>
+                            </div>
+                            <div className="create-ad-upload-wrapper">
+                                <div>برای آگهی خود یک تصویر مناسب انتخاب کنید.آگهی های دارای تصویر بیشتر مورد توجه کاربران قرار میگیرند.</div>
+                                <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"50px"}}>
+                                    <img src={uploadImage} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
+                                    <input 
+                                        onChange={upload}
+                                        type="file" 
+                                        name="filefield" 
+                                        multiple={true}
+                                        style={{display:"none"}}
+                                        ref={(fileInput)=>setUploadRef(fileInput)}    
+                                    />
+                                    <Button className="btn-dark" style={{marginTop:"10px"}} onClick={()=>uploadRef.click()}>
+                                        آپلود تصویر
+                                    </Button>
+                                    <div className="show-filelist">
+                                    {imageList.length>0 && imageList.map((url , index)=>(
+                                        <div style={{position:"relative"}}>
+                                            <img src={url} id="image-uploaded" key={index} className="techapp-define-cost-upload-image"/>
+                                        </div>
+                                    ))}
+                                    </div>
+                                </div>
                             </div>
                             <div className="create-ad-step-two-full-form">
                                 <span>توضیحات بیشتر در مورد محصول</span>

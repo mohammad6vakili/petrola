@@ -5,7 +5,8 @@ import {
     FILTER,
     CHECK_FIL,
     IS_FILTER,
-    COMPANY_INFO
+    COMPANY_INFO,
+    SELECT_FOR_CHAT
   } from "./Action";
 
 const initialState = {
@@ -15,8 +16,9 @@ const initialState = {
     filter:null,
     checkFil:null,
     isFilter:false,
-    companyInfo:null
-};
+    companyInfo:null,
+    selectForChat:null
+  };
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -34,6 +36,8 @@ const Reducer = (state = initialState, action) => {
       return {...state , isFilter: action.payload};
     case COMPANY_INFO:
       return {...state , companyInfo: action.payload};
+    case SELECT_FOR_CHAT:
+      return {...state , selectForChat: action.payload};
     default:
       return state;
   }
