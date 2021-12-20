@@ -120,6 +120,13 @@ color: #FFC412 !important;
   width: 20px !important;
   height: 20px !important;
   min-width: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding:0 !important;
+  background-color: transparent !important;
+  box-shadow: unset !important;
+  border: none !important;
   /* display: none !important; */
 }
 .fPDpuU{
