@@ -116,11 +116,18 @@ color: #FFC412 !important;
 .jRFJkP:hover:enabled, .jRFJkP:focus:enabled{
   color: #353535 !important;
 }
+.rec-carousel>button{
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  /* display: none !important; */
+}
 .fPDpuU{
   margin: 0 !important;
 }
 .jRFJkP,.cNNJIt{
   width: 35px !important;
+  display: none !important;
   min-width: 35px !important;
   height: 35px !important;
   display: flex !important;
