@@ -113,6 +113,24 @@ color: #FFC412 !important;
 .ant-select-selector{
   height: 100% !important;
 }
+.jRFJkP:hover:enabled, .jRFJkP:focus:enabled{
+  color: #353535 !important;
+}
+.fPDpuU{
+  margin: 0 !important;
+}
+.jRFJkP,.cNNJIt{
+  width: 35px !important;
+  min-width: 35px !important;
+  height: 35px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding:0 !important;
+  background-color: transparent !important;
+  box-shadow: unset !important;
+  border: none !important;
+}
 .ant-select-selection-placeholder,.ant-select-selection-item,.ant-select-selection-search{
   display: flex;
   align-items: center;

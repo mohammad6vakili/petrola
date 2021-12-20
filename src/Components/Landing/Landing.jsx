@@ -129,7 +129,7 @@ const Landing=()=>{
                     <div style={{fontSize:"22px",fontWeight:"700",width:"100%",textAlign:"center"}}>پربازدیدترین آگهی ها</div>
                     <Carousel breakPoints={breakPoints} itemsToScroll={1} itemsToShow={7}>
                     {ads && ads.map((data)=>(
-                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
+                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads landing-home-ads">
                             <div>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />
@@ -164,7 +164,7 @@ const Landing=()=>{
                     <div style={{fontSize:"22px",fontWeight:"700",width:"100%",textAlign:"center"}}>برترین فروشندگان</div>
                     <Carousel breakPoints={breakPoints} itemsToScroll={1} itemsToShow={7}>
                     {ads && ads.map((data)=>(
-                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads">
+                        <div onClick={()=>goToSingle(data)} style={{backgroundColor:Colors.gray}} className="home-ads landing-home-ads">
                             <div>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />

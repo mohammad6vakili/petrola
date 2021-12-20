@@ -316,6 +316,10 @@
     font-size: 12px !important;
     margin: 0 10px;
   }
+  .landing-home-ads{
+    flex-direction: column !important;
+    height: 230px !important;
+  }
   .landing-footer > div:nth-child(1) > div {
     width: 300px;
     text-align:justify ;

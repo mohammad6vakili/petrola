@@ -29,7 +29,7 @@
 }
 .view-ad-first > div > img {
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: 50vh !important;
   border: 1px solid rgba(128, 128, 128, 0.288);
 }
 .view-ad-first > div > div {
@@ -133,12 +133,12 @@
 }
 @media only screen and (max-width: 600px) {
   .view-ad-first > div > img {
-    height: 70%;
+    height: 50vh;
   }
 }
 @media only screen and (max-width: 400px) {
   .view-ad-first > div > img {
-    height: 50%;
+    height: 30vh;
   }
   .view-ad-first > div {
     height: unset;

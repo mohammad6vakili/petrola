@@ -111,7 +111,9 @@
 }
 @media only screen and (max-width: 440px) {
   .home-ads-wrapper {
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
   }
   .home-ads {
     flex-direction: row;
