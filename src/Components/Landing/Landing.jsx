@@ -115,7 +115,8 @@ const Landing=()=>{
                     </div>
                 </div>
             </div>
-                <div className="slider-wrapper">
+                <div className="slider-wrapper" style={{marginBottom:"70px",marginTop:"40px"}}>
+                    <div style={{fontSize:"22px",marginBottom:"15px",fontWeight:"700",width:"100%",textAlign:"center"}}>دسته بندی ها</div>
                     <Carousel breakPoints={breakPoints} itemsToScroll={1} itemsToShow={7}>
                         {category && category.map((d,index)=>(
                             <div className="landing-cat" onClick={()=>history.push("/home")}>
@@ -159,6 +160,9 @@ const Landing=()=>{
                 </div>
                 <div className="landing-banner">
                     <img src={bannerImage} alt="banner" />
+                    <span>پترولا</span>
+                    <div>بهترین مکان برای تبلیغ آگهی های شما</div>
+                    <div>در دو نسخه اپلیکیشن و وب اپلیکیشن</div>
                 </div>
                 <div className="slider-wrapper-ads">
                     <div style={{fontSize:"22px",fontWeight:"700",width:"100%",textAlign:"center"}}>برترین فروشندگان</div>
