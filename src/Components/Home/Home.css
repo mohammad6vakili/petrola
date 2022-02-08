@@ -117,7 +117,7 @@
   }
   .home-ads {
     flex-direction: row;
-    width: 90% !important;
+    width: 96% !important;
     min-width: 310px !important;
     height: 150px !important;
     margin:7px 0;

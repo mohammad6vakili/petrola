@@ -3,6 +3,7 @@ import "./Landing.css";
 import { useHistory } from 'react-router';
 import headerBg from "../../Assets/images/landing-header-bg.png";
 import maskLogo from "../../Assets/images/mask-logo.png";
+import newLogo from "../../Assets/images/petrola.png";
 import headerVector from "../../Assets/images/landing-vector.png";
 import Colors from '../../Helper/Colors';
 import { Button, Input } from 'antd';
@@ -15,6 +16,8 @@ import mobileImage from "../../Assets/images/landing-mobile.png";
 import namadImage from "../../Assets/images/namad.png";
 import bazarImage from "../../Assets/images/bazaar.svg";
 import googleImage from "../../Assets/images/googleplay.svg";
+import landingNewBanner from "../../Assets/images/banner2.jpg";
+import mobileView from "../../Assets/images/mobile-view.png";
 import Env from "../../Constant/Env.json";
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
@@ -158,12 +161,7 @@ const Landing=()=>{
                     ))}
                     </Carousel>
                 </div>
-                <div className="landing-banner">
-                    <img src={bannerImage} alt="banner" />
-                    <span>پترولا</span>
-                    <div>بهترین مکان برای تبلیغ آگهی های شما</div>
-                    <div>در دو نسخه اپلیکیشن و وب اپلیکیشن</div>
-                </div>
+                <img src={landingNewBanner} alt="banner" style={{width:"100%"}}/>
                 <div className="slider-wrapper-ads">
                     <div style={{fontSize:"22px",fontWeight:"700",width:"100%",textAlign:"center"}}>برترین فروشندگان</div>
                     <Carousel breakPoints={breakPoints} itemsToScroll={1} itemsToShow={7}>
@@ -216,7 +214,7 @@ const Landing=()=>{
                         </div>
                     </div>
                     <div>
-                        <img src={mobileImage} style={{width:"230px"}} alt="app" />
+                        <img src={mobileView} style={{width:"230px"}} alt="app" />
                     </div>
                 </div>
                 <div className="landing-footer">
