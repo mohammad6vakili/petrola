@@ -99,7 +99,6 @@ const Landing=()=>{
                         <span onClick={()=>history.push("/vip")}>ویژه</span>
                         <span onClick={()=>history.push("/contact")}>تماس با ما</span>
                     </div>
-                    <Button onClick={landingLogin} className="btn-gold">ورود به پترولا</Button>
                 </div>
                 <div className="landing-header-body">
                     <div>
@@ -108,13 +107,16 @@ const Landing=()=>{
                     <div>
                         <span style={{fontWeight:"700"}}>کالا و خدمات خود را در پترولا سریع و آسان به فروش برسانید</span>
                         <span>
-                            با توجه به افزایش سرعت مبادلات تجاری , بازرگانی و ضرورت جستجو برای
-                            نیاز های کالایی و همچنین اطلاع رسانی در خصوص محصولات
-                            تولیدکنندگان و تامین کنندگان صنعت عظیم نفت بر آن شدیم سایتی را طراحی
-                            کنیم که پاسخگوی نیاز این صنعت و صنایع وابسته به آن باشد.
-                            بر همین اساس پترولا طراحی آماده بهره برداری شد.
+                        «تولید کنندگان و تامین کنندگان»
+                        کالا و خدمات خود را سریع و آسان در پترولا به اشتراک بگذارید.
+                        <br />
+                        «تجار و بازرگانان»
+                        نیازهای کالایی خود را سریع و آسان از طریق پترولا جستجو کنید.
                         </span>
-                        <Button onClick={()=>history.push("/home")} className="btn-dark">مشاهده آگهی ها</Button>
+                        <div>
+                            <Button onClick={()=>history.push("/home")} className="btn-dark">مشاهده آگهی ها</Button>
+                            <Button onClick={landingLogin} className="btn-gold">ورود به پترولا</Button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,17 +199,15 @@ const Landing=()=>{
                 <div className="landing-app-section">
                     <div>
                         <div className="landing-app-section-title">اپلیکیشن پترولا</div>
-                        <div>با توجه به افزایش سرعت مبادلات تجاری , بازرگانی و ضرورت جستجو برای
-                            نیاز های کالایی و همچنین اطلاع رسانی در خصوص محصولات
-                            تولیدکنندگان و تامین کنندگان صنعت عظیم نفت بر آن شدیم سایتی را طراحی
-                            کنیم که پاسخگوی نیاز این صنعت و صنایع وابسته به آن باشد.
+                        <div>
+                            باتوجه به افزایش سرعت مبادلات تجاری ، بازرگانی و ضرورت جستجو نیازهای کالایی و همچنین اطلاع رسانی در خصوص محصولات تولید کنندگان و تامین کنندگان برآن شدیم سایت و اپلیکیشن پترولا را طراحی کنیم که پاسخگوی نیاز صنایع ، تجار و بازرگانان باشد
                         </div>
                         <div>
-                            <Button>
+                            <Button onClick={()=>window.location.href = "https://Petrola.ir/app.apk"}>
                                 <img src={bazarImage} alt="bazar"/>
                                 دانلود از بازار
                             </Button>
-                            <Button>
+                            <Button onClick={()=>window.location.href = "https://Petrola.ir/app.apk"}>
                                 <img src={googleImage} alt="google"/>
                                 دانلود از گوگل پلی
                             </Button>
@@ -231,8 +231,8 @@ const Landing=()=>{
                     <div>
                         <div className="landing-footer-menu">
                             <div>
-                                <span>دانلود اپلیکیشن</span>
-                                <span>ورود به پترولا</span>
+                                <span onClick={()=>window.location.href = "https://Petrola.ir/app.apk"}>دانلود اپلیکیشن</span>
+                                <span onClick={()=>history.push("/login")}>ورود به پترولا</span>
                                 <span>درباره ما</span>
                                 <span>تماس با ما</span>
                             </div>

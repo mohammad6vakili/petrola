@@ -19,6 +19,7 @@ const ViewAd=()=>{
     const dispatch=useDispatch();
     const data=useSelector(state=>state.Reducer.adData);
     const info=useSelector(state=>state.Reducer.companyInfo);
+    const myAd=useSelector(state=>state.Reducer.myAd);
     const [modal , setModal]=useState(false);
 
     const getCompanyInfo=async()=>{
@@ -92,20 +93,24 @@ const ViewAd=()=>{
                         <img style={{width:"20px",cursor:"pointer"}} src={notSavedImage} alt="save" />
                     </div>
                     <div className="view-ad-fourth">
-                        <Button 
-                            onClick={ContactWithCustomer}
-                            className="btn-dark" 
-                            style={{width:"40%"}}
-                        >
-                            ارتباط با فروشنده
-                        </Button>
-                        <Button 
-                            onClick={ChatWithCustomer}
-                            className="btn-dark" 
-                            style={{width:"40%"}}
-                        >
-                            چت آنلاین با فروشنده
-                        </Button>
+                        {myAd==false &&
+                        <>
+                            <Button 
+                                onClick={ContactWithCustomer}
+                                className="btn-dark" 
+                                style={{width:"40%"}}
+                            >
+                                ارتباط با فروشنده
+                            </Button>
+                            <Button 
+                                onClick={ChatWithCustomer}
+                                className="btn-dark" 
+                                style={{width:"40%"}}
+                            >
+                                چت آنلاین با فروشنده
+                            </Button>
+                        </>
+                        }
                     </div>
                 </div>
             </div>

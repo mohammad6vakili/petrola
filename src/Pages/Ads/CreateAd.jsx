@@ -219,6 +219,53 @@ const CreateAd=()=>{
             {step===1 &&
                 <div className="create-ad-step-two">
                     <img style={{cursor:"pointer",margin:"0 0 10px 0",width:"15px"}} onClick={()=>setStep(0)} src={backImage} alt="back" />
+                    <div className="create-ad-step-two-seperate"  style={{width:"100%"}}>
+                                <div></div>
+                                <span style={{width:"300px",textAlign:"center"}}>تصویر آگهی</span>
+                                <div></div>
+                            </div>
+                            <div className="create-ad-upload-wrapper">
+                                <div>برای آگهی خود یک تصویر مناسب انتخاب کنید.آگهی های دارای تصویر بیشتر مورد توجه کاربران قرار میگیرند.</div>
+                                <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"50px"}}>
+                                    <img src={uploadImage} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
+                                    <input 
+                                        onChange={upload}
+                                        type="file" 
+                                        name="filefield" 
+                                        multiple={true}
+                                        style={{display:"none"}}
+                                        ref={(fileInput)=>setUploadRef(fileInput)}    
+                                    />
+                                    <Button className="btn-dark" style={{marginTop:"10px"}} onClick={()=>uploadRef.click()}>
+                                        آپلود تصویر
+                                    </Button>
+                                    <div className="show-filelist">
+                                    {imageList.length>0 && imageList.map((url , index)=>(
+                                        <div style={{position:"relative"}}>
+                                            <div 
+                                                style={{
+                                                    position:"absolute",
+                                                    width:"20px",
+                                                    height:"20px",
+                                                    borderRadius:"50%",
+                                                    backgroundColor:"red",
+                                                    color:"white",
+                                                    paddingBottom:"8px",
+                                                    cursor:"pointer",
+                                                    display:"flex",
+                                                    justifyContent:"center",
+                                                    alignItems:"center"
+                                                }}
+                                                onClick={()=>setImageList(imageList.filter((img)=>img!==url))}
+                                            >
+                                                 _
+                                            </div>
+                                            <img src={url} id="image-uploaded" key={index} className="techapp-define-cost-upload-image"/>
+                                        </div>
+                                    ))}
+                                    </div>
+                                </div>
+                            </div>
                     <div className="create-ad-step-two-head">
                         <div className="create-ad-step-two-seperate">
                             <div></div>
@@ -332,35 +379,6 @@ const CreateAd=()=>{
                                 <Input value={price} onChange={(e)=>setPrice(e.target.value)} style={{width:"40%"}}/>
                             </div>
                             <div className=""></div>
-                            <div className="create-ad-step-two-seperate"  style={{width:"100%"}}>
-                                <div></div>
-                                <span style={{width:"300px",textAlign:"center"}}>تصویر آگهی</span>
-                                <div></div>
-                            </div>
-                            <div className="create-ad-upload-wrapper">
-                                <div>برای آگهی خود یک تصویر مناسب انتخاب کنید.آگهی های دارای تصویر بیشتر مورد توجه کاربران قرار میگیرند.</div>
-                                <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"50px"}}>
-                                    <img src={uploadImage} style={{width:"20%",minWidth:"280px",height:"40vh"}} alt="upload" />
-                                    <input 
-                                        onChange={upload}
-                                        type="file" 
-                                        name="filefield" 
-                                        multiple={true}
-                                        style={{display:"none"}}
-                                        ref={(fileInput)=>setUploadRef(fileInput)}    
-                                    />
-                                    <Button className="btn-dark" style={{marginTop:"10px"}} onClick={()=>uploadRef.click()}>
-                                        آپلود تصویر
-                                    </Button>
-                                    <div className="show-filelist">
-                                    {imageList.length>0 && imageList.map((url , index)=>(
-                                        <div style={{position:"relative"}}>
-                                            <img src={url} id="image-uploaded" key={index} className="techapp-define-cost-upload-image"/>
-                                        </div>
-                                    ))}
-                                    </div>
-                                </div>
-                            </div>
                             <div className="create-ad-step-two-full-form">
                                 <span>توضیحات بیشتر در مورد محصول</span>
                                 <TextArea value={desc} onChange={(e)=>setDesc(e.target.value)} style={{minHeight:"150px",marginTop:"10px"}}/>

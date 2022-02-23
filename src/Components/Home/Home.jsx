@@ -7,7 +7,7 @@ import { Spin } from 'antd';
 import { useDispatch , useSelector} from 'react-redux';
 import { useHistory } from 'react-router';
 import { setProfile } from '../../Store/Action';
-import { setAdData  , setCategory , setFilter , setIsFilter} from '../../Store/Action';
+import { setAdData ,setMyAd , setCategory , setFilter , setIsFilter} from '../../Store/Action';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Env from "../../Constant/Env.json";
@@ -87,6 +87,7 @@ const Home=()=>{
         console.log(isFilter);
         console.log(filter);
         getProfileData();
+        dispatch(setMyAd(false));
     },[])
 
     useEffect(async()=>{

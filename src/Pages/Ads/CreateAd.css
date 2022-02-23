@@ -67,6 +67,9 @@
   flex-direction: column;
   margin: 15px 0;
 }
+.create-ad-step-two-full-form input {
+height: 45px;
+}
 .create-ad-step-two-full-form > span:nth-child(2) {
   font-size: 13px;
   margin: 10px 0;

@@ -3,7 +3,7 @@ import "./MyAds.css";
 import axios from 'axios';
 import Env from "../../Constant/Env.json";
 import { useDispatch } from 'react-redux';
-import { setAdData } from '../../Store/Action';
+import { setAdData , setMyAd} from '../../Store/Action';
 import Header from "../../Menu/Header";
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
@@ -41,6 +41,7 @@ const MyAds=()=>{
 
     const goToSingle=(data)=>{
         dispatch(setAdData(data));
+        dispatch(setMyAd(true));
         history.push("/ads/view");
     }
 

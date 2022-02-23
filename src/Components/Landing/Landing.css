@@ -62,14 +62,17 @@
   font-size: 20px;
 }
 .landing-header-body > div > span:nth-child(2) {
-  width: 500px;
-  font-size: 14px;
+  width: 550px;
+  text-align: center;
+  font-size: 14.5px;
+  font-weight: 600;
 }
-.landing-header-body > div > button {
+.landing-header-body > div > div > button {
   border-radius: 30px !important;
   height: 45px !important;
   width: 150px !important;
   margin-top: 15px !important;
+  margin: 0 5px;
   border: 1px solid #353535 !important;
 }
 .slider-wrapper {
@@ -157,7 +160,7 @@
   justify-content: center;
 }
 .landing-app-section-title {
-  font-size: 20px;
+  font-size: 24px !important;
   width: unset !important;
   font-weight: 700;
   padding-bottom: 10px;
@@ -165,6 +168,8 @@
 }
 .landing-app-section > div > div {
   width: 450px;
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 25px;
 }
 .landing-app-section > div > div > button {
