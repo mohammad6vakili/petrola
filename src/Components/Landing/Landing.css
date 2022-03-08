@@ -64,8 +64,8 @@
 .landing-header-body > div > span:nth-child(2) {
   width: 550px;
   text-align: center;
-  font-size: 14.5px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 100;
 }
 .landing-header-body > div > div > button {
   border-radius: 30px !important;
@@ -263,6 +263,25 @@
 }
 .landing-footer-cpright {
   display: none;
+}
+.new-banner{
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #353535;
+}
+.new-banner>div:nth-child(1){
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.new-banner button{
+  height: 50px !important;
 }
 @media only screen and (max-width: 1000px) {
   .landing-header {

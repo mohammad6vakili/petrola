@@ -105,12 +105,12 @@ const Landing=()=>{
                         <img src={headerVector} alt="petrola" />
                     </div>
                     <div>
-                        <span style={{fontWeight:"700"}}>کالا و خدمات خود را در پترولا سریع و آسان به فروش برسانید</span>
+                        <span style={{fontWeight:"700"}}></span>
                         <span>
-                        «تولید کنندگان و تامین کنندگان»
+                            <span style={{fontWeight:"900",fontSize:"20px",marginLeft:"3px"}}>«تولید کنندگان و تامین کنندگان»</span>
                         کالا و خدمات خود را سریع و آسان در پترولا به اشتراک بگذارید.
                         <br />
-                        «تجار و بازرگانان»
+                        <span style={{fontWeight:"900",fontSize:"20px",marginLeft:"3px"}}>«تجار و بازرگانان»</span>
                         نیازهای کالایی خود را سریع و آسان از طریق پترولا جستجو کنید.
                         </span>
                         <div>
@@ -118,6 +118,25 @@ const Landing=()=>{
                             <Button onClick={landingLogin} className="btn-gold">ورود به پترولا</Button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='new-banner'>
+                <div>نمایشگاه دائمی محصولات ایرانی در حلب</div>
+                <div>
+                    <Button 
+                        style={{border:"1px solid #FFC412",height:"70px",marginLeft:"20px"}}
+                        onClick={()=>window.location.href = "https://expo.petrola.ir"} 
+                        className="btn-gold"
+                    >
+                        وب سایت نمایشگاه
+                    </Button>
+                    <Button 
+                        onClick={()=>window.location.href = "https://expo.petrola.ir/register"} 
+                        className="btn-dark"
+                        style={{border:"1px solid #FFC412",height:"70px"}}
+                    >
+                        ثبت نام در نمایشگاه
+                    </Button>
                 </div>
             </div>
                 <div className="slider-wrapper" style={{marginBottom:"70px",marginTop:"40px"}}>
