@@ -127,7 +127,7 @@ const Draft=()=>{
                                             <img style={{width:"20px"}} src={trashImage} alt="delete"/>
                                         </Button>
                                         <Button onClick={()=>{
-                                            dispatch(setEditId(data.id));
+                                            dispatch(setEditId(data));
                                             history.push("/ads/create");
                                         }}  className="btn-gold draft-remove-btn">
                                             <img style={{width:"20px"}} src={penImage} alt="delete"/>

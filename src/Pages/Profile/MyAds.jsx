@@ -105,7 +105,7 @@ const MyAds = () => {
                 <div style={{position:"absolute",bottom:"-20px"}}>
                     <Button onClick={()=>deleteAd(data.id)} style={{backgroundColor:"red",color:"white",height:"30px"}}>حذف</Button>
                     <Button onClick={()=>{
-                        dispatch(setEditId(data.id));
+                        dispatch(setEditId(data));
                         history.push("/ads/create");
                     }}>ویرایش</Button>
                 </div>

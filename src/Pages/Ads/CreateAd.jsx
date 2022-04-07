@@ -115,7 +115,7 @@ const CreateAd=()=>{
             if(editId===null){
                 postData.append("id","-1");
             }else{
-                postData.append("id",editId);
+                postData.append("id",editId.id);
             }
             postData.append("type",type);
             postData.append("vip",type==="1"?vip.toString():"0");
@@ -158,6 +158,25 @@ const CreateAd=()=>{
     useEffect(()=>{
         setIsImageList(false);
     },[isImageList])
+
+    useEffect(()=>{
+        if(editId){
+            setStep(1);
+            setPersianName(editId.persianName)
+            setEnglishName(editId.englishName)
+            setCount(editId.count)
+            setCapacity(editId.capacity)
+            setSize(editId.size)
+            setClas(editId.pClass)
+            setStandards(editId.standards)
+            setMaterial(editId.material)
+            setProducer(editId.producer)
+            setPrice(editId.price)
+            setDesc(editId.desc)
+
+        }
+        console.log(editId)
+    },[])
 
 
     return(
@@ -233,7 +252,9 @@ const CreateAd=()=>{
             }
             {step===1 &&
                 <div className="create-ad-step-two">
-                    <img style={{cursor:"pointer",margin:"0 0 10px 0",width:"15px"}} onClick={()=>setStep(0)} src={backImage} alt="back" />
+                    {editId===null &&                
+                        <img style={{cursor:"pointer",margin:"0 0 10px 0",width:"15px"}} onClick={()=>setStep(0)} src={backImage} alt="back" />
+                    }
                     <div className="create-ad-step-two-seperate"  style={{width:"100%"}}>
                                 <div></div>
                                 <span style={{width:"300px",textAlign:"center"}}>تصویر آگهی</span>
