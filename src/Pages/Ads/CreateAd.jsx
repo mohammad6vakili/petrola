@@ -3,19 +3,23 @@ import "./CreateAd.css";
 import { useHistory } from 'react-router';
 import Header from "../../Menu/Header";
 import { Radio , Button , Upload, Input , Select , Modal} from 'antd';
+import { setEditId } from '../../Store/Action';
 import uploadImage from "../../Assets/images/ads-upload.png";
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import backImage from "../../Assets/images/side-back.svg";
 import axios from 'axios';
 import Env from "../../Constant/Env.json";
+import { useDispatch } from 'react-redux';
 const {Option}=Select;
 const {TextArea}=Input;
 
 
 const CreateAd=()=>{
     const history=useHistory();
+    const dispatch=useDispatch();
     const category=useSelector(state=>state.Reducer.category);
+    const editId=useSelector(state=>state.Reducer.editId);
     
     const [step , setStep]=useState(0);
     const [catStep , setCatStep]=useState(0);
@@ -100,9 +104,19 @@ const CreateAd=()=>{
             toast.warning("لطفا نام فارسی را وارد کنید",{
                 position: toast.POSITION.BOTTOM_LEFT
             });
-        }else{
+        }else if(username === null){
+            toast.warning("برای ثبت آگهی ابتدا باید وارد برنامه شوید",{
+                position:"bottom-left"
+            })
+            history.push("/login")
+        }
+        else{
             postData.append("username",username);
-            postData.append("id","-1");
+            if(editId===null){
+                postData.append("id","-1");
+            }else{
+                postData.append("id",editId);
+            }
             postData.append("type",type);
             postData.append("vip",type==="1"?vip.toString():"0");
             postData.append("title",persianName);
@@ -130,6 +144,7 @@ const CreateAd=()=>{
                     });
                 }else{
                     history.push("/myAds");
+                    dispatch(setEditId(null))
                 }
             }catch(err){
                 console.log(err);
@@ -237,7 +252,7 @@ const CreateAd=()=>{
                                         ref={(fileInput)=>setUploadRef(fileInput)}    
                                     />
                                     <Button className="btn-dark" style={{marginTop:"10px"}} onClick={()=>uploadRef.click()}>
-                                        آپلود تصویر
+آپلود تصویر                                         
                                     </Button>
                                     <div className="show-filelist">
                                     {imageList.length>0 && imageList.map((url , index)=>(

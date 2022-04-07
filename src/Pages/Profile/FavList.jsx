@@ -69,7 +69,7 @@ const FavList=()=>{
                 {fav.length>0 ?
                     fav.map((data)=>(
                         <div style={{backgroundColor:Colors.gray,height:"unset"}} className="home-ads">
-                            <div style={{height:"50%"}} onClick={()=>goToSingle(data)}>
+                            <div style={{height:"50%",marginBottom:"10px"}} onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
                                     <img src={data.img} alt="ads" />
                                 :

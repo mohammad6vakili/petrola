@@ -7,7 +7,7 @@ import vipImage from "../Assets/images/vip.svg";
 import chatImage from "../Assets/images/chat.svg";
 import userImage from "../Assets/images/user.svg";
 import { Input , Button , AutoComplete } from 'antd';
-import {setFilter} from "../Store/Action";
+import {setAdData} from "../Store/Action";
 import { useHistory } from 'react-router';
 import Env from "../Constant/Env.json";
 import { toast } from 'react-toastify';
@@ -19,12 +19,33 @@ const Header=()=>{
     const history = useHistory();
     const [options, setOptions] = useState([]);
     const [searched , setSearched]=useState([]);
+    const [newAds , setNewAds]=useState([]);
 
     
     const selectSearch=(val)=>{
-        dispatch(setFilter(val));
+        console.log(val)
+        console.log(newAds)
+        newAds.map((ad)=>{
+            if(ad.persianName===val){
+                dispatch(setAdData(ad));
+                history.push("/ads/view");
+            }
+        })
+        // dispatch(setFilter(val));
         setOptions([]);
         setSearched([]);
+    }
+
+    const getHomeData=async()=>{
+        try{
+            const response=await axios.post(Env.baseUrl + "/GetHomeData",{});
+            setNewAds(response.data.data.newAds);
+        }catch(err){
+            console.log(err);
+            toast.error("خطا در برقراری ارتباط",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+        }
     }
 
     const handleSearch = async(value) => {
@@ -51,6 +72,9 @@ const Header=()=>{
         }
     };
 
+    useEffect(()=>{
+        getHomeData();
+    },[])
 
     return(
         <div className="header">
@@ -96,7 +120,19 @@ const Header=()=>{
             </div>
             <div className="header-btn">
                 <img  onClick={()=>history.push("/chat")} style={{cursor:"pointer"}} src={chatImage} alt="chat" />
-                <Button onClick={()=>history.push("/ads/create")}>ثبت آگهی</Button>
+                <Button 
+                    onClick={()=>{
+                        if(!localStorage.getItem("username")){
+                            toast.warning("برای ثبت آگهی ابتدا باید وارد برنامه شوید",{
+                                position:"bottom-left"
+                            })
+                            history.push("/login")
+                        }else{
+                            history.push("/ads/create")
+                        }
+                    }}
+                >ثبت آگهی
+                </Button>
             </div>
         </div>
     )

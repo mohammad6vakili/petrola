@@ -7,7 +7,7 @@ import axios from 'axios';
 import notSavedImage from "../../Assets/images/notsaved.svg";
 import noImage from "../../Assets/images/no_image.svg";
 import Colors from '../../Helper/Colors';
-import { setAdData } from '../../Store/Action';
+import { setAdData,setEditId } from '../../Store/Action';
 import { useDispatch } from 'react-redux';
 import Env from "../../Constant/Env.json";
 import penImage from "../../Assets/images/pen-dark.svg";
@@ -98,7 +98,7 @@ const Draft=()=>{
                         <div style={{backgroundColor:Colors.gray,height:"unset"}} className="home-ads">
                             <div style={{height:"50%"}} onClick={()=>goToSingle(data)}>
                                 {data.img !=="https://app.petrola.ir/uploads/" ?
-                                    <img src={data.img} alt="ads" />
+                                    <img style={{objectFit:"fill"}} src={data.img} alt="ads" />
                                 :
                                     <img src={noImage} alt="no image" />
                                 }
@@ -125,6 +125,12 @@ const Draft=()=>{
                                 <div style={{display:"flex",alignItems:"center",marginTop:"10px"}}>
                                         <Button onClick={()=>removeAds(data.id)}  className="btn-gold draft-remove-btn">
                                             <img style={{width:"20px"}} src={trashImage} alt="delete"/>
+                                        </Button>
+                                        <Button onClick={()=>{
+                                            dispatch(setEditId(data.id));
+                                            history.push("/ads/create");
+                                        }}  className="btn-gold draft-remove-btn">
+                                            <img style={{width:"20px"}} src={penImage} alt="delete"/>
                                         </Button>
                                     </div>
                             </div>

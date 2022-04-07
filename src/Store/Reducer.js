@@ -7,7 +7,8 @@ import {
     IS_FILTER,
     COMPANY_INFO,
     SELECT_FOR_CHAT,
-    MY_AD
+    MY_AD,
+    EDIT_ID
   } from "./Action";
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
     isFilter:false,
     companyInfo:null,
     selectForChat:null,
-    myAd:false
+    myAd:false,
+    editId:null
   };
 
 const Reducer = (state = initialState, action) => {
@@ -42,6 +44,8 @@ const Reducer = (state = initialState, action) => {
       return {...state , selectForChat: action.payload};
     case MY_AD:
       return {...state , myAd: action.payload};
+    case EDIT_ID:
+      return {...state , editId: action.payload};
     default:
       return state;
   }

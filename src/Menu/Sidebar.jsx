@@ -3,7 +3,7 @@ import Colors from "../Helper/Colors";
 import "./Sidebar.css";
 import { Menu,Checkbox, Spin } from 'antd';
 import { useDispatch , useSelector} from 'react-redux';
-import { setFilter , setCheckFil} from '../Store/Action';
+import { setFilter , setCheckFil, setIsFilter} from '../Store/Action';
 import backImage from "../Assets/images/side-back.svg";
 
 
@@ -13,6 +13,7 @@ const Sidebar=()=>{
     const [step , setStep]=useState(0);
     const [selectParent , setSelectParent]=useState(null);
     const category=useSelector(state=>state.Reducer.category);
+    const isFilter=useSelector(state=>state.Reducer.isFilter);
 
     const showChild=(data)=>{
         if(data.child==="0"){
@@ -26,6 +27,9 @@ const Sidebar=()=>{
 
     return(
         <div className="sidebar">
+            {isFilter===true &&
+                <div style={{cursor:"pointer",color:"orange",fontWeight:"900",fontSize:"14px"}} className='sidebar-title' onClick={()=>dispatch(setIsFilter(false))}>نمایش بدون فیلتر</div>
+            }
             <div className="sidebar-title">فیلتر بر اساس نوع آگهی</div>
             <div style={{display:"flex",flexDirection:"column",padding:"0 15px 15px 15px"}}>
                 <Checkbox.Group style={{display:"flex",flexDirection:"column"}} onChange={(value)=>dispatch(setCheckFil(value))}>

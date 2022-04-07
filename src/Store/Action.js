@@ -7,6 +7,7 @@ export const IS_FILTER="IS_FILTER";
 export const COMPANY_INFO="COMPANY_INFO";
 export const SELECT_FOR_CHAT="SELECT_FOR_CHAT";
 export const MY_AD="MY_AD";
+export const EDIT_ID="EDIT_ID";
 
 
 export const setAdData=(data)=>{
@@ -77,6 +78,14 @@ export const setMyAd=(data)=>{
     return(
         {
             type:MY_AD,
+            payload:data
+        }
+    )
+}
+export const setEditId=(data)=>{
+    return(
+        {
+            type:EDIT_ID,
             payload:data
         }
     )
