@@ -25,7 +25,7 @@ const MyAds = () => {
         category: "-1",
         type: "-1",
         isVip: "-1",
-        status: "1",
+        status: "5",
       });
       setAds(response.data.data);
       console.log(response.data);

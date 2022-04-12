@@ -1,8 +1,6 @@
 .login{
     width: 100%;
     height: 100vh;
-    background-image: url(/src/Assets/images/login-bg.svg);
-    background-repeat: no-repeat;
     display: flex;
     position: relative;
 }
@@ -47,6 +45,11 @@
     margin-top: 30px;
     text-align: center;
     direction: ltr;
+}
+@media only screen and (max-width:1200px){
+.mv-hh-dd{
+    display: none;
+}
 }
 @media only screen and (max-width:1000px){
     .login{

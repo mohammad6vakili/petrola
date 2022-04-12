@@ -81,6 +81,9 @@ height: 45px;
   align-items: center;
   justify-content: space-between;
 }
+.create-ad-step-two-mini-form>span{
+  width: 100px;
+}
 .create-ad-step-two-mini-form > input,
 .create-ad-step-two-mini-form > div {
   width: 25%;
@@ -143,5 +146,8 @@ height: 45px;
   .create-ad-step-two-full-form,
   .create-ad-step-two-mini-form {
     width: 96% !important;
+  }
+  .mv-hi-btn{
+    bottom: 20% !important;
   }
 }

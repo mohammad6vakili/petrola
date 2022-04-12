@@ -49,7 +49,7 @@ const Draft=()=>{
             toast.success(response.data.msg,{
                 position: toast.POSITION.BOTTOM_LEFT
             });
-            history.push("/home");
+            history.push("/myAds");
             console.log(response.data);
         }catch(err){
             console.log(err);

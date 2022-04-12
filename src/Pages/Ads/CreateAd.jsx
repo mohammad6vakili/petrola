@@ -138,7 +138,7 @@ const CreateAd = () => {
             position: toast.POSITION.BOTTOM_LEFT,
           });
         } else {
-          history.push("/myAds");
+          history.push("/draft");
           dispatch(setEditId(null));
         }
       } catch (err) {
@@ -213,6 +213,7 @@ const CreateAd = () => {
             انتخاب دسته بندی
           </Button>
           <div
+            className="mv-hi-btn"
             style={{
               width: "100%",
               display: "flex",
@@ -410,7 +411,7 @@ const CreateAd = () => {
                 />
               </div>
               <div className="create-ad-step-two-mini-form">
-                <span>تعداد</span>
+                <span>تعداد / مقدار</span>
                 <Input
                   value={count}
                   onChange={(e) => setCount(e.target.value)}
@@ -444,7 +445,6 @@ const CreateAd = () => {
                 <Input
                   value={capacity}
                   onChange={(e) => setCapacity(e.target.value)}
-                  style={{ marginLeft: "12px" }}
                 />
                 <Select
                   showSearch

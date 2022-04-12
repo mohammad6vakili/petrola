@@ -7,6 +7,7 @@ import loginMarkerMobile from "../../Assets/images/login-marker-mobile.svg";
 import PinInput from 'react-pin-input';
 import { useHistory } from 'react-router';
 import Fa from "../../Constant/Fa.json";
+import bgVector from "../../Assets/images/login-bg.svg"
 import { Button, Input } from 'antd';
 import axios from 'axios';
 import Env from "../../Constant/Env.json";
@@ -95,7 +96,7 @@ const Login=()=>{
         <div className="login">
             <img style={{position:"absolute",right:"10%",top:"7%"}} src={circleLoginBig} alt="bg" />
             <img style={{position:"absolute",right:"8%",top:"5%"}} src={circleLoginSmall} alt="bg" />
-            <div style={{width:"70%"}}>
+            <div style={{width:"100%" , position:"relative"}}>
                 {status===0 &&
                     <>
                         <img className="login-logo" src={logo} alt="logo" />
@@ -153,8 +154,8 @@ const Login=()=>{
                         <Button disabled={name.length<3} onClick={registerReq}>{Fa.loginFourBtn}</Button>
                     </>
                 }
+                <img className='mv-hh-dd' style={{position:"absolute",left:"0",bottom:"0"}} src={bgVector} alt="bg" />
             </div>
-            <div style={{width:"30%"}}></div>
         </div>
     )
 }
